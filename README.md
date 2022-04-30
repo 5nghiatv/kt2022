@@ -8,6 +8,7 @@ npm install
 npm -v || yarn -v
 git --version
 vue -V
+
 ===========================================
 
 docker-compose down
