@@ -1,0 +1,12 @@
+_id,company,taxcode,address,host,username,password,database,__v,active,port,email
+5f8e34774605923a944b8d0b,DNTN Tin học Xuân Mai (local),0304529821,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,root,nghia@tv,ketoan_xuanmai,0,false,3306,123456@gmail.com
+5f8e4647283692337cac7b40,Công ty Gổ Nhất Nam (local),0100104443004,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,root,nghia@tv,ketoan_nhatnam,0,false,3306,123456@gmail.com
+5f8e46c20fc0a435604b7671,DNTN Tin học Xuân Mai (hawk),0304529821,"118/63 Bạch Đằng,P24,Bình Thạnh - HCM",localhost,nghiajsc_root,nghia@tv,nghiajsc_ketoan,0,false,3306,5nghiatv@gmail.com
+5f9008650bf2002cc8f28857,Công ty Gỗ Nhất Nam (heroku),0100104443004,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",durvbryvdw2sjcm5.cbetxkdyhwsb.us-east-1.rds.amazonaws.com,oo6izc27h1fqqeky,cyqh5mmtkubpu4oc,fswbtll5tqehvzp9,0,false,3306,5nghiatv@gmail.com
+5f9b8c5e6d1c8d34f08103d7,Công ty KingMinh (heroku),0100105937002,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com,wz5wckeuc5ruvw54,y7o4liaau6l7meok,ig3mjls5mvghpa2w,0,false,3306,
+601003ec6faa810017c9c8c7,Công ty Upload (hawk),0100105937002,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,nghiajsc_root,nghia@tv,nghiajsc_upload,0,false,3306,
+603f770f85d6dd00156fe146,DNTN Tin học Xuân Mai (heroku),0304529821,"118/63 Bạch Đằng,P24,Bình Thạnh - HCM",ao9moanwus0rjiex.cbetxkdyhwsb.us-east-1.rds.amazonaws.com,gqboa30iq62kth25,ai6fk9c0zd1trdp0,hhb9jtzxt1sma2zr,0,false,3306,
+6056b804bd486477f1887692,Công ty Gổ Nhất Nam (Hawk),0100104443004,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,nghiajsc_root,nghia@tv,nghiajsc_nhatnam,0,false,3306,
+605aa1522eee3bfcc8a1720d,Công ty Bách Thành (hawk),0304529821,"118/63 Bạch Đằng,P24,Bình Thạnh - HCM",localhost,nghiajsc_root,nghia@tv,nghiajsc_bachthanh,0,false,3306,
+606e5e0411c51e32a095b557,Công ty KingMinh (local),0100105937002,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,root,nghia@tv,ketoan_kingminh,0,false,3306,
+613ec100c21dea170cdaaa0a,Công ty Vfp Upload (local),0100105937002,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,root,nghia@tv,ketoan_upload,0,false,3306,

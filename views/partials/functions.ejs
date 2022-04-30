@@ -1,0 +1,175 @@
+
+<script>
+function myOnloadFunc() {
+    
+    //alert("success_msg Welcome To Kế toán id loaded in Function.ejs at layout.ejs");
+    if(document.querySelector("#success_msg")){
+        setTimeout(function(){ $("#success_msg").hide(); },3000);
+    }
+    if(document.querySelector("#error_msg_warning")){
+        setTimeout(function(){ $("#error_msg_warning").hide(); },3000);
+    }
+    if(document.querySelector("#error_msg_danger")){
+        setTimeout(function(){ $("#error_msg_danger").hide(); },3000);
+    }
+    if(document.querySelector("#error_danger")){
+        setTimeout(function(){ $("#error_danger").hide(); },3000);
+    }
+
+  
+}
+
+function setPagination(){
+    setTimeout(function () {
+            var add = (parseInt($('#itemCount').val()) /parseInt($('#pageLimit').val())) ;
+            var add2 = parseInt((parseInt($('#itemCount').val()) /parseInt($('#pageLimit').val()))) ;
+             add = add > add2 ?  parseInt($('#pageLimit').val()) : 0 ;
+
+			$('.custom-pagination').rpmPagination({
+				limit: parseInt($('#pageLimit').val()),
+				total: parseInt($('#itemCount').val()) + add ,
+				domElement: '.table-row'
+			});
+		}, 100);
+}
+
+$(document).ready(function() {
+        //$('#itemCount').val(result.length);
+        setPagination();
+        //==============================
+        // do Filter on View
+        $("#inputFilter").on("keyup", function(event) {
+            if(event.key === 'Enter') {
+                var inputValue = $(this).val().toLowerCase();
+                // Mở hết trang để lọc hoặc thiết lập ban đầu
+                $('.custom-pagination').rpmPagination({
+				    limit: (inputValue ==='' ? parseInt($("#pageLimit").val()) :  parseInt($("#itemCount").val()) ),
+				    domElement: '.table-row'
+			    });
+                // Tiến hành lọc
+                $("#customerTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(inputValue) > -1)
+                });
+            }
+        });
+        //==============================
+        // Giới hạn Số dòng 1 trang
+        $("#inputRows").on("keyup", function(event) {
+            if(event.key === 'Enter') {
+                if(  parseInt($(this).val()) > parseInt($("#itemCount").val()) ){
+                    alert('Số dòng vượt quá giới hạn : '+parseInt($("#itemCount").val()));
+                    return;
+                }
+                $('.custom-pagination').rpmPagination({
+				limit: parseInt($(this).val()),
+				domElement: '.table-row'
+			    });
+            }
+        });
+
+    })
+//================== $(document).ready(function()
+
+$(function(){
+//================== List All Database
+        $("#getdb").on('click', function(){
+            $.get( "/exp/getdb", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },30000);
+            });
+        });
+//================== Backup All Collection
+        $("#backupdb").on('click', function(data){
+            if(!confirm('Are you sure to Backup All Collection ?')) { return;}
+            $.get( "/exp/backupdb", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },30000);
+            });
+        });
+//================== Import Employees.csv
+        $("#importempl").on('click', function(){
+            if(!confirm('Are you sure to Restore collection Employees ?')) { return;}
+            $.get( "/exp/importempl", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+//================== Import Users.csv
+        $("#importuser").on('click', function(){
+            if(!confirm('Are you sure to Restore collection Users ?')) { return;}
+            $.get( "/exp/importuser", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+//================== Import Products.csv
+        $("#importprod").on('click', function(){
+            if(!confirm('Are you sure to Restore collection Products ?')) { return;}
+            $.get( "/exp/importprod", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+
+//================== Import Customers.csv
+        $("#importcust").on('click', function(){
+            if(!confirm('Are you sure to Restore collection Customers ?')) { return;}
+            $.get( "/exp/importcust", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+
+//================== Delete collection employees
+        $("#dropempl").on('click', function(){
+            if(!confirm('Are you sure to Delete collection employees ?')) { return;}
+            $.get( "/exp/drop/employees", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+//================== Delete collection products
+        $("#dropprod").on('click', function(){
+            if(!confirm('Are you sure to Delete collection products ?')) { return;}
+            $.get( "/exp/drop/products", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+//================== Delete collection customers
+        $("#dropcust").on('click', function(){
+            if(!confirm('Are you sure to Delete collection customers ?')) { return;}
+            $.get( "/exp/drop/customers", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+//================== Delete collection users
+        $("#dropuser").on('click', function(){
+            if(!confirm('Are you sure to Delete collection users ? (Will have to recreate 1) ')) { return;}
+            $.get( "/exp/drop/users", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },4000);
+                location.reload();
+            });
+        });
+
+//================== List collection
+        $("#listcollct").on('click', function(){
+            $.get( "/exp/listcollct", function( data ) {
+                $("#message").show().html(data['success']);
+                setTimeout(function(){ $("#message").hide(); },30000);
+            });
+        });
+
+});
+
+
+</script>

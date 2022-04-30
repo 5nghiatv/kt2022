@@ -1,0 +1,59 @@
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>StoryBooks</title>
+</head> -->
+
+
+<body>
+    <div class="container" style="width: 100%;">
+        <h1>Stories</h1>
+        <div class="row">
+            <% stories.forEach(function(story ,i) { %>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <%- editIcon(story , global.__user, story._id ) %>
+                        </div>
+                        <div class="card-content center-align">
+                            <h5><%= story.title %></h5>
+                            <p><%= stripTags( truncate(story.body, 150)) %></p>
+                            <br>
+                            <div class="chip">
+                                <img src="<%= story.user.image %>" alt="">
+                                <a href="/social/user/<%= story.user._id %>"><%= story.user.name %></a>
+                                <!-- <div class="card-action center-align">
+                                </div>     -->
+                            </div>
+        
+                        </div>
+                        <div class="card-action center-align">
+                        <a href="/social/<%= story._id %>" class="btn grey">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+        
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js"
+        integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" crossorigin="anonymous"></script>
+
+    <script>
+        M.Sidenav.init(document.querySelector('.sidenav'))
+        M.FormSelect.init(document.querySelector('#status'))
+
+        CKEDITOR.replace('body', {
+            plugins: 'wysiwygarea, toolbar, basicstyles, link'
+        })
+    </script>
+</body>
+

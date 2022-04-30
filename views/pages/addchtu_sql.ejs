@@ -1,0 +1,56 @@
+
+    <main>
+        <h3><% if(btndisabled) { %> Thêm Chứng từ <% } else {  %> Hiệu chỉnh Chứng từ <% }  %>
+        </h3>
+
+        <form action="/mysql/chungtu" method="POST" autocomplete="off">
+            <input type="hidden" name="id" value="<%= chungtu.id %>" >
+            
+            <div class="form-row">
+                <div class="form-group col-md-6" style="padding-right: 0px;" >
+                    <label>Số chứng từ</label>
+                    <input type="text" class="form-control" name="soct"  value="<%= chungtu.soct %>">
+                    <div class="text-danger">
+                        <%= chungtu.soctError %></div>
+                </div>
+                <div class="form-group col-md-6" style="padding-right: 0px;" >
+                    <label>Ngày tháng</label>
+                    <input type="date" class="form-control" name="ngay"  value="<%= chungtu.ngay.toISOString().substring(0, 10)  %>">
+                    <div class="text-danger">
+                        <%= chungtu.ngayError %></div>
+                </div>
+    
+            </div>
+            <div class="form-group">
+                <label>Diễn giãi</label>
+                <input type="text" class="form-control" name="diengiai"  value="<%= chungtu.diengiai %>">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6" style="padding-right: 0px;" >
+                    <label>TK Nợ</label>
+                    <input type="text" class="form-control" name="tkno"  value="<%= chungtu.tkno %>">
+                </div>
+                <div class="form-group col-md-6" style="padding-right: 0px;" >
+                    <label>TK Có</label>
+                    <input type="text" class="form-control" name="tkco"  value="<%= chungtu.tkco %>">
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6" style="padding-right: 0px;" >
+                    <label>Số tiền</label>
+                    <input type="number" class="form-control" name="sotien"  value="<%= chungtu.sotien %>">
+                </div>
+
+                <div class="form-group col-md-6" style="padding-right: 0px; text-align: center;" >
+                    <br>
+                    <button name='addnew' type="submit" class="btn btn-info"><i class="fa fa-file-o"></i> Add New</button>
+                    <a class="btn btn-warning" href="/mysql/chungtu"><i class="fa fa-list-alt"></i> View All</a>
+                    <button <%= btndisabled %> name='update' type="submit" class="btn btn-info"><i class="fa fa-database"></i> Update</button>
+                </div>
+            </div>
+        </form>
+
+    </main>
+

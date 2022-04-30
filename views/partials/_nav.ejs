@@ -1,0 +1,126 @@
+<nav class="navbar navbar-expand-lg navbar-danger bg-light">
+    <a class="navbar-brand " href="http://nghiatv.tk/ketoan"> <img
+      src="/logo_black.png" alt="" width=150 height=30>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/exp">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/exp/about">About</a>
+        </li>
+  
+  <% if(global.__user){ %>
+    
+  <!-- Collection  -->
+  <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle " href="/exp/li-empl" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Collection
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/employees">List Employee</a>
+        <div class="dropdown-divider"></div>
+        <a id='importempl' class="dropdown-item" href="javascript:void(0)">Restore Employee</a>
+        <a id='dropempl' class="dropdown-item" href="javascript:void(0)">Delete Employee</a>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/customers" >List Customer</a>
+        <div class="dropdown-divider"></div>
+        <a id='importcust' class="dropdown-item" href="javascript:void(0)">Restore Customer</a>
+        <a id='dropcust' class="dropdown-item" href="javascript:void(0)">Delete Customer</a>
+
+      </div>
+  </li>
+
+  <!-- Database -->
+  <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Database
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a id="getdb" class="dropdown-item" href="javascript:void(0)">List Database</a>
+      <div class="dropdown-divider"></div>
+      <a id="listcollct" class="dropdown-item" href="javascript:void(0)">List Collections</a>
+      <div class="dropdown-divider"></div>
+      <a id="backupdb"  class="dropdown-item" href="javascript:void(0)">Backup All Collection</a>
+
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/connects">List Connects</a>
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/users">List Users</a>
+      <div class="dropdown-divider"></div>
+      <a id="importuser" class="dropdown-item" href="javascript:void(0)">Restore Users</a>
+      <a id='dropuser' class="dropdown-item" href="javascript:void(0)">Delete Users</a>
+      <!-- <a id='importconnect' class="dropdown-item disabled" href="javascript:void(0)">Restore Connect</a>
+      <a id='dropconnect' class="dropdown-item disabled" href="javascript:void(0)">Delete Connect</a> -->
+      </div>
+  </li>        
+  <!-- Multimedia -->
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle " href="/exp/li-user" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Multimedia
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="/stripe-store/index.html">Shopping</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/upl">Upload Picture</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/social/login">List Story</a>
+
+      <!-- <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/social">List Story</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="/social/intro">Intro Story</a> -->
+  
+    </div>
+  </li>
+  
+    <!-- Collection mysql Heroku-->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        MySQL Heroku
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/mysql/chungtu">Chứng từ Kế toán</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/mysql/customer">Danh Mục Khách hàng</a>
+        <div class="dropdown-divider"></div>
+
+        <a class="dropdown-item disabled" style="text-align: center;"    href="/mysql/customer">Báo cáo</a>
+        
+      </div>
+    </li>
+        
+  <% }%>
+        <li class="nav-item">
+          <a class="nav-link" href="/">VueJS Frontend</a>
+        </li>
+  <% if(global.__user){ %>
+        <li class="nav-item">
+            <a  class="nav-link"  href="/users/logout">Logout </a>
+        </li>
+  <% }%>
+  
+  <% if(!global.__user){ %>
+    <li class="nav-item">
+        <a  class="nav-link"  href="/users/login">Login </a>
+    </li>
+  <% }%>
+  
+        <li class="nav-item">
+          <!-- <a class="nav-link " href="#">Disabled</a> -->
+        </li>
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+    </div>
+  </nav>

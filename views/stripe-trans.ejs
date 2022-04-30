@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Generics</title>
+        <meta name="description" content="This is the description">
+        <link rel="stylesheet" href="/stripe-store/styles.css" />
+    </head>
+    <body>
+        <header class="main-header">
+            <nav class="nav main-nav" style="display: block;">
+                <ul>
+                    <li><a href="/stripe-store/index.html">HOME</a></li>
+                    <li><a href="/store">STORE</a></li>
+                    <li><a href="/exp">Express JS</a></li>
+                </ul>
+            </nav>
+            <h2 class="band-name band-name-large">Trans List </h2>
+            <!-- <div class="container">
+                <button type="button" class="btn btn-header">Get our Latest Album</button>
+            </div>
+            <button type="button" class="btn btn-header btn-play">&#9658;</button> -->
+        </header>
+        <section class="content-section container main-trans">
+            <h2 class="section-header">TOURS</h2>
+            <table id="customerTable" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">#</th>
+                        <th>Ngày tháng</th>
+                        <th>Số tiền</th>
+                        <th>Tỷ giá</th>
+                        <th>Phí</th>
+                        <th>Thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th>Action&#8482; </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% items.forEach(function(item ,i) { %>
+                        <tr class="table-row__">
+                            <td style="text-align: center;"><%= Number(i)+1 %></td>
+                            <td ><%= new Date(item.created * 1000).toISOString().replace(/T/, ' ').replace(/\..+/, '') %></td>
+                            <td style="text-align: right;"><%= new Number(item.net).toLocaleString("fi-FI") %></td>
+                            <td style="text-align: right;"><%= new Number(1/item.exchange_rate/10).toLocaleString("fi-FI") %></td>
+                            <td style="text-align: right;"><%= new Number(item.fee).toLocaleString("fi-FI") %></td>
+                            <td style="text-align: right;"><%= new Number(item.amount).toLocaleString("fi-FI") %></td>
+                            <td ><%= item.status %></td>
+                            <td style="text-align: center;">
+                                <a href="/updatetrans/<%= item.id %>" > <i class="fa fa-pencil fa-lg" aria-hidden="true" style="color: darksalmon;"></i></a>
+                            </td>
+
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </section>
+        <footer class="main-footer">
+            <div class="container main-footer-container">
+                <h3 class="band-name">The Generics</h3>
+                <ul class="nav footer-nav" style="display: block;">
+                    <li>
+                        <a href="https://www.youtube.com" target="_blank">
+                            <img src="/stripe-store/Images/YouTube Logo.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.spotify.com" target="_blank">
+                            <img src="/stripe-store/Images/Spotify Logo.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com" target="_blank">
+                            <img src="/stripe-store/Images/Facebook Logo.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

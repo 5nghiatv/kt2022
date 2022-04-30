@@ -1,0 +1,61 @@
+
+    <main>
+        <div>
+
+            <h3 style="margin-left: 17px;">Connects List<a href="/connect/0" class="btn btn-outline-info" style="float:right;margin-right: 17px;"><i class="fa fa-plus"></i> Create New</a> </h3>
+            <!---------------------- Dùng chung -->
+            <nav class="navbar navbar-expand-lg navbar-danger bg-light">
+            <!-- <p>Type some text to search the table for <strong>Id</strong>, <strong>Name</strong>, <strong>Age</strong>, <strong>Street</strong>, <strong>PostCode</strong>:</p>   -->
+                <input style="float-left" class="form-control col-10" id="inputFilter" type="text" placeholder="Search.." />
+                <input style="float-right"class="form-control col-2" id="inputRows" type="text" placeholder="Rows/page.." />
+            </nav>
+            <!----------------------- Dùng chung -->
+
+            <table id="connectTable" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">#</th>
+                        <th>Company</th>
+                        <th>Tax-code</th>
+                        <th>Host</th>
+                        <th>Database</th>
+                        <th>Active</th>
+                        <th>Action&#8482; </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% connects.forEach(function(connect ,i) { %>
+                        <tr class="table-row">
+                            <td style="text-align: center;"><%= Number(i)+1 %></td>
+                            <td><%= connect.company %></td>
+                            <td><%= connect.taxcode %></td>
+                            <td><%= connect.host %></td>
+                            <td><%= connect.database %></td>
+                            <% if(connect.active==true){ %>
+                                <td style="color: darksalmon;"><%= connect.active %></td>
+                            <% } else { %>
+                                <td style="color: lavender;"><%= connect.active %></td>
+                            <% } %>
+        
+                            <td>
+                                <a href="/connect/<%= connect._id %>"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;
+                                <a href="/connect/<%= connect._id %>?_method=DELETE" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                            </td>
+
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <!-- parent element for pagination menu list -->
+                <ul class="pagination custom-pagination"></ul>
+
+                <!-- prepare necessary element attributes to pass parameters for pagination -->
+                <input type="hidden" id="itemCount" value="<%= connects.length %>">
+                <input type="hidden" id="pageLimit" value="10">
+            </div>
+
+        </div>
+    </main>
+    

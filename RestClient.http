@@ -1,0 +1,440 @@
+### CREATE user
+POST http://localhost:8081/api/connects
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+Content-Type: application/json
+
+{
+    "name": "Trần Trần Dần",
+    "password": "111111",
+    "email": "5nghiatv@gmail.com"
+}
+
+### UPDATE user/5eeeb190a7983b1fc40a2bea
+PATCH http://localhost:8081/api/user/5ef46c39a523ab00171fa745
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+Content-Type: application/json
+
+{
+    "name": "Nghĩa <- Trần Dần-psw:222222",
+    "password": "222222"
+}
+
+### DELETE user/_id
+DELETE http://localhost:8081/api/user/5ef5c4f5fe6cdf17ecce4dda
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+
+
+### GET 1 user/:_id
+GET https:acn102.herokuapp.com/api/user/5ef5c632148b8051700fc822
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+
+### GET 1 user/:_id
+GET http://localhost:8081/api/user/5ef5c632148b8051700fc822
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+
+
+### get AllUser
+GET http://localhost:8081/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+
+### token - Vũ Anh - API
+GET http://localhost:8081/api/products
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+
+
+###########====================== GET CURRENT USER ======================
+### token - Vũ Anh
+GET http://localhost:8081/api/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+
+### token - Nghĩa
+GET http://localhost:8081/api/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWVlYjE5MGE3OTgzYjFmYzQwYTJiZWEiLCJpYXQiOjE1OTI4OTc4NTZ9.-hTF8-kLrn9mcXu5pjFbGf2dzd_ubrBgevimkrlebbU
+
+### token - maimai@gm,ail.com
+GET http://localhost:8081/api/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYxYjIxOGQ0M2Y5ZjJmYjQ4N2MyMWEiLCJpYXQiOjE1OTI4OTgwNzN9.Tt3vuqZoCMWphZwvjmms5Gb8L2uSBiyU2DCPAZB_9d8
+
+
+
+
+###########====================== REGISTER ======================
+POST http://localhost:8081/api/register
+Content-Type: application/json
+
+{
+    "name": "Trần Mai Mai",
+    "password": "654321",
+    "email": "654321@gmail.com"
+}
+
+###########====================== LOGOUT ======================
+DELETE http://localhost:4000/users/logout
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTkyNzk5MzkxLCJleHAiOjE1OTI3OTk0MDZ9.sH68t0dHhqsKPYG6iufLjyKDk59gyFobk76nldttTIg"
+}
+
+
+
+### Tran Văn Nghĩa
+POST http://localhost:8081/api/login
+Content-Type: application/json
+
+{
+    "name": "Nghĩa",
+    "password": "111111",
+    "email": "5nghiatv@gmail.com"
+}
+
+### get AllUser
+GET http://localhost:8081/api/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpc0FkbWluIjp0cnVlLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFRo4buLIE1haSBUaOG6o28iLCJyb2xlIjoiTWVtYmVyIiwic3RhdHVzIjoiUGVuZGluZyIsIl9pZCI6IjVlZjA2MTI2NzI4ZDhhMDU2OGU1MDU1ZCIsIm5hbWUiOiJWxakgQW5oIDIiLCJwYXNzd29yZCI6IiQyYSQxMCRPUWpWanpFWE5CQzVZazQxR0lyNmhPOHU5VTl4NUhMWDJXOW5henE0Yy5SZkhrdmlhMWhubSIsImVtYWlsIjoidnVhbmhAZ21haWwuY29tIiwicmVnaXN0ZXJlZCI6IjIwMjAtMDYtMjJUMDc6NDM6MzQuNjUyWiIsIl9fdiI6MCwiaXNBZG1pbiI6dHJ1ZX0sImlhdCI6MTU5MzQxNDI1NSwiZXhwIjoxNTkzNTAwNjU1fQ.Ioz6SRygm_WIr08vH2qcFHlSimodFfm8Rio_WfQDsBA
+
+### UPDATE user/5eeeb190a7983b1fc40a2bea
+PATCH http://localhost:8081/api/user/5ef6f027def5e60017352757
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+Content-Type: application/json
+
+{
+    "name": "Nghĩa <- Trần Dần-psw:222222",
+    "password": "222222",
+    "isAdmin": true
+}
+
+###########================ DMTKHOAN-INSERT ======================
+POST http://localhost:8081/api/dmtkhoan
+Content-Type: application/json
+
+{
+    "sotk": "bbbb",
+    "tentk": "awrwerwer654321",
+    "nodn": 0 ,
+    "codn": 0 
+}
+
+###########================= DMTKHOAN-UPDATE 
+PATCH http://localhost:8081/api/dmtkhoan/9610
+Content-Type: application/json
+
+{
+    "id": 9610,
+    "sotk": "aaaa",
+    "tentk": "awrwerwer654321",
+    "nodn": 110 ,
+    "codn": 110 
+}
+
+### ========================  get All 
+GET http://localhost:8081/api/dmtkhoans
+Authorization: 
+
+### ========================= get 1  
+GET http://localhost:8081/api/dmtkhoan/9615
+Authorization: 
+
+### ========================= DELETE 1  
+DELETE http://localhost:8081/api/dmtkhoan/9616
+Authorization: 
+
+
+###########================ INSERT = ctuvattu =============================
+POST http://localhost:8081/api/ctuvattu
+Content-Type: application/json
+
+{
+      "id": null,
+      "ctid": "00600013",
+      "mahang": "PM001",
+      "makho": "001",
+      "soluong": 110,
+      "dongia": 110,
+      "sotien": 115500000
+}
+
+###########================= UPDATE 
+PATCH http://localhost:8081/api/ctuvattu/395499
+Content-Type: application/json
+
+{
+      "id": 395499,
+      "ctid": "00600013",
+      "mahang": "PM001",
+      "makho": "001",
+      "soluong": 99110,
+      "dongia": 999110,
+      "sotien": 9995500000
+}
+
+### ========================  GET All 
+POST http://localhost:8081/api/chungtus
+Content-Type: application/json
+
+{
+      "pd_fromdate": "2016-01-01" ,
+      "pd_todate": "2016-06-30"
+}
+
+### ========================= GET 1 tinhcandoips - tinhcandoihang
+POST http://localhost:8081/api/tinhcandoihang
+Content-Type: application/json
+
+{
+      "pd_fromdate": "2020-01-01" ,
+      "pd_todate": "2020-06-30"
+}
+
+### ========================= GET 1 chuyensodutk - chuyensoduhang
+POST http://localhost:8081/api/chuyensodutk
+Content-Type: application/json
+
+{
+      "pd_fromdate": "2021-01-01" ,
+      "pd_todate": "2021-06-30"
+}
+
+### ========================= query
+POST http://localhost:8081/api/query
+Content-Type: application/json
+
+{
+      "query": "select * from ctuktoan"
+}
+
+### ========================= DELETE 1
+DELETE http://localhost:8081/api/ctuktoan/395499
+Authorization: 
+
+
+
+
+### ========================= TEST
+GET http://localhost:8081/api/candoipsXLSX
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNjEyNjcyOGQ4YTA1NjhlNTA1NWQiLCJpYXQiOjE1OTI4OTgwMTR9.TGYEjQ5tJc85gjTrc011yt0HdEeJ21uBlIWjBtnmRFo
+Content-Type: application/json
+
+{
+    "fromtodate": {
+      "pd_fromdate": "2019-01-01" ,
+      "pd_todate": "2019-01-31"
+    },
+    "company": {
+      "masothue": "3500102799",
+      "company": "Xuân Mai Corpt",
+      "address": "118/63 Bạch Đằng, P24, Bình Thạnh - HCM",
+      "dnlon": false
+    },
+    "filename": "NhatKyChung.xlsx"
+}
+
+### ========================= TEST
+GET http://localhost:8081/api/dmketoanXLSX
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNzVjOGQ2MDg1MjU5MWNlZjVmNzYiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHJvzKNuZyBUaHXMiXkiLCJyb2xlIjoiU3RhZmYiLCJzdGF0dXMiOiJQZW5kaW5nIiwiYWRtaW4iOmZhbHNlLCJkYXRhYmFzZXMiOlsibmdoaWFqc2Nfa2V0b2FuIiwibmdoaWFqc2NfYmFjaHRoYW5oIiwibmdoaWFqc2Nfa2luZ21pbmgiLCJuZ2hpYWpzY19uaGF0bmFtIl0sInNvY2lhbElkIjoiIiwiX2lkIjoiNWVmMDc1YzhkNjA4NTI1OTFjZWY1Zjc2IiwibmFtZSI6IlRyb8yjbmcgVGh1zIl5IiwicGFzc3dvcmQiOiIkMmEkMTAkbW9jNjNTcEtmYmJLSFI1ZVNwUnppLlpvUW10aVZJSkFoVjNCVUlBR2Q4a0l5ZFc1VXIwT0siLCJlbWFpbCI6IjVuZ2hpYXR2QGdtYWlsLmNvbSIsInJlZ2lzdGVyZWQiOiIyMDIwLTA2LTIyVDA5OjExOjM2LjMxN1oiLCJfX3YiOjAsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNjE4MDA3OTkyLCJleHAiOjE2MTgwOTQzOTJ9.kAV_bLoKFRwlP4AwJrfMKwOkwjT--grUQ6JJHg8F9AI
+Content-Type: application/json
+
+{
+    "fromtodate": {
+      "pd_fromdate": "2016-01-01" ,
+      "pd_todate": "2016-12-31"
+    },
+    "company": {
+      "masothue": "3500102799",
+      "company": "Xuân Mai Corpt",
+      "address": "118/63 Bạch Đằng, P24, Bình Thạnh - HCM",
+      "dnlon": false
+    },
+    "filename": "BangKeHoaDon.xlsx",
+    "patern": "20",
+    "email": "5nghiatv@gmail.com"
+
+}
+
+### ========================= TEST
+GET http://localhost:8081/api/chitiets/01600033
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWYwNzVjOGQ2MDg1MjU5MWNlZjVmNzYiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHJvzKNuZyBUaHXMiXkiLCJyb2xlIjoiU3RhZmYiLCJzdGF0dXMiOiJQZW5kaW5nIiwiYWRtaW4iOmZhbHNlLCJkYXRhYmFzZXMiOlsibmdoaWFqc2Nfa2V0b2FuIiwibmdoaWFqc2NfYmFjaHRoYW5oIiwibmdoaWFqc2Nfa2luZ21pbmgiLCJuZ2hpYWpzY19uaGF0bmFtIl0sInNvY2lhbElkIjoiIiwiX2lkIjoiNWVmMDc1YzhkNjA4NTI1OTFjZWY1Zjc2IiwibmFtZSI6IlRyb8yjbmcgVGh1zIl5IiwicGFzc3dvcmQiOiIkMmEkMTAkbW9jNjNTcEtmYmJLSFI1ZVNwUnppLlpvUW10aVZJSkFoVjNCVUlBR2Q4a0l5ZFc1VXIwT0siLCJlbWFpbCI6IjVuZ2hpYXR2QGdtYWlsLmNvbSIsInJlZ2lzdGVyZWQiOiIyMDIwLTA2LTIyVDA5OjExOjM2LjMxN1oiLCJfX3YiOjAsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNjE4MDA4MTc5LCJleHAiOjE2MTgwOTQ1Nzl9.4Szft8wpHvMuAK5YGFMSSUvYLZfXlzhfQ9ZBFtWGM4Y
+Content-Type: application/json
+
+{
+    "fromtodate": {
+      "pd_fromdate": "2016-01-01" ,
+      "pd_todate": "2016-01-31"
+    },
+    "company": {
+      "masothue": "3500102799",
+      "company": "Xuân Mai Corpt",
+      "address": "118/63 Bạch Đằng, P24, Bình Thạnh - HCM",
+      "dnlon": false
+    },
+    "filename": "BangKeHoaDon.xlsx",
+    "query": "SELECT * FROM ctuktoan  WHERE ngay BETWEEN '2016-01-01' AND '2016-01-11' "
+
+}
+
+### ========================= TEST
+GET http://localhost:8081/api/getVnDong/1234567890
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjExZjNjZmM5ODNkOTFmZGMzMjA2NmEiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFbEg24gTmdoxKlhIiwicm9sZSI6IkFkbWluIiwic3RhdHVzIjoiUGVuZGluZyIsImFkbWluIjp0cnVlLCJkYXRhYmFzZXMiOlsia2V0b2FuX3h1YW5tYWksa2V0b2FuX25oYXRuYW0sbmdoaWFqc2Nfa2V0b2FuLGZzd2J0bGw1dHFlaHZ6cDksaWczbWpsczVtdmdocGEydyxuZ2hpYWpzY191cGxvYWQsaGhiOWp0enh0MXNtYTJ6cixuZ2hpYWpzY19uaGF0bmFtLG5naGlhanNjX2JhY2h0aGFuaCxrZXRvYW5fa2luZ21pbmgsa2V0b2FuX3VwbG9hZCJdLCJzb2NpYWxJZCI6IiIsImltYWdlIjoiIiwiX2lkIjoiNjIxMWYzY2ZjOTgzZDkxZmRjMzIwNjZhIiwibmFtZSI6Ik5naGnMg2EiLCJlbWFpbCI6Im5naGlhdHZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkYS5MZ3dYYnRYRkh4UjlrZ1MzNEV1ZTR2eTRDRlJQWC5abnVWMXVESTc2ZGd3Rlh2TzF5L1MiLCJyZWdpc3RlcmVkIjoiMjAyMi0wMi0xNlQxMDo0NzoxNi4wMDBaIn0sImlhdCI6MTY0NzQ3OTE3NSwiZXhwIjoxNjQ3NTY1NTc1fQ.FNVIyumd4flJRMyFnLkey26hqYCnDnlp2C8xHWEaUYg
+Content-Type: application/json
+
+{
+
+    "query": "call Create_Ctuketoan('2016-01-01','2016-03-31')"
+
+}
+
+### Tran Văn Nghĩa
+POST http://localhost:8081/api/refreshtoken 
+Content-Type: application/json
+
+{
+    "RefreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjExZjNjZmM5ODNkOTFmZGMzMjA2NmEiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFbEg24gTmdoxKlhIiwicm9sZSI6IkFkbWluIiwic3RhdHVzIjoiUGVuZGluZyIsImFkbWluIjp0cnVlLCJkYXRhYmFzZXMiOlsia2V0b2FuX3h1YW5tYWksa2V0b2FuX25oYXRuYW0sbmdoaWFqc2Nfa2V0b2FuLGZzd2J0bGw1dHFlaHZ6cDksaWczbWpsczVtdmdocGEydyxuZ2hpYWpzY191cGxvYWQsaGhiOWp0enh0MXNtYTJ6cixuZ2hpYWpzY19uaGF0bmFtLG5naGlhanNjX2JhY2h0aGFuaCxrZXRvYW5fa2luZ21pbmgsa2V0b2FuX3VwbG9hZCJdLCJzb2NpYWxJZCI6IiIsImltYWdlIjoiIiwiX2lkIjoiNjIxMWYzY2ZjOTgzZDkxZmRjMzIwNjZhIiwibmFtZSI6Ik5naGnMg2EiLCJlbWFpbCI6Im5naGlhdHZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkYS5MZ3dYYnRYRkh4UjlrZ1MzNEV1ZTR2eTRDRlJQWC5abnVWMXVESTc2ZGd3Rlh2TzF5L1MiLCJyZWdpc3RlcmVkIjoiMjAyMi0wMi0xNlQxMDo0NzoxNi4wMDBaIn0sImlhdCI6MTY0ODU2MzA5NiwiZXhwIjoxNjQ4NjQ5NDk2fQ.k4TQiliuagjZIY31eMtmU6MxVUrGLcHRiTmC4G1w5ls"
+}
+
+### Tran Văn Nghĩa
+POST http://localhost:8081/api/login
+Content-Type: application/json
+
+{
+    "name": "Nghĩa",
+    "password": "111111",
+    "email": "nghiatv@gmail.com"
+}
+
+### ========================= TEST
+## http://localhost:8081/#/ketoan/reports/inphieunhapxuat/01600609
+# POST http://localhost:8081/api/query
+POST http://localhost:8081/api/query
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjExZjNjZmM5ODNkOTFmZGMzMjA2NmEiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFbEg24gTmdoxKlhIiwicm9sZSI6IkFkbWluIiwic3RhdHVzIjoiUGVuZGluZyIsImFkbWluIjp0cnVlLCJkYXRhYmFzZXMiOlsia2V0b2FuX3h1YW5tYWksa2V0b2FuX25oYXRuYW0sbmdoaWFqc2Nfa2V0b2FuLGZzd2J0bGw1dHFlaHZ6cDksaWczbWpsczVtdmdocGEydyxuZ2hpYWpzY191cGxvYWQsaGhiOWp0enh0MXNtYTJ6cixuZ2hpYWpzY19uaGF0bmFtLG5naGlhanNjX2JhY2h0aGFuaCxrZXRvYW5fa2luZ21pbmgsa2V0b2FuX3VwbG9hZCJdLCJzb2NpYWxJZCI6IiIsImltYWdlIjoiIiwiX2lkIjoiNjIxMWYzY2ZjOTgzZDkxZmRjMzIwNjZhIiwibmFtZSI6Ik5naGnMg2EiLCJlbWFpbCI6Im5naGlhdHZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkYS5MZ3dYYnRYRkh4UjlrZ1MzNEV1ZTR2eTRDRlJQWC5abnVWMXVESTc2ZGd3Rlh2TzF5L1MiLCJyZWdpc3RlcmVkIjoiMjAyMi0wMi0xNlQxMDo0NzoxNi4wMDBaIn0sImlhdCI6MTY0ODk1Mzg4MiwiZXhwIjoxNjQ4OTU0MTgyfQ.XJ1mt7vyJGN1_E-iPHPGxRleNH8Bvue9tqCaqDCkKfQ
+Content-Type: application/json
+
+{
+    "fromtodate": {
+      "pd_fromdate": "2021-01-01" ,
+      "pd_todate": "2021-12-31"
+    },
+    "company": {
+      "masothue": "3500102799",
+      "company": "Xuân Mai Corpt",
+      "address": "118/63 Bạch Đằng, P24, Bình Thạnh - HCM",
+      "dnlon": false
+    },
+    "query0": "CALL DelChungtuNam('2009-01-01')",
+    "query_": " CALL ChuyenSoDuTaiKhoan('2021-01-01', '2021-12-31', 0 )",
+    "query2": "CALL CopyChungtuID('01611079')",
+    "query3": "UPDATE ctuktoan SET sotien = 89113372 WHERE id=205923",
+    "query4": "select * from hoadon where ctid = '00700001' ",
+    "query5": "select * from chitiet where id = '186838' ",
+    "query6": "CALL GanTienHangHoadon(?,?,?,?)",
+    "query9": "CALL CopyChungtuKt('2016-01-01','2016-03-31','2024-12-31')",
+    "query": "CALL getHoadon('2020-01-01','2020-06-30','20','','')",
+    "query10": "select * from dmtiente",
+    "params_": ["07397289","98765002","9876522","1331"],
+    "params1": ["09463130","12000000","0","3331"],
+    "query7": "SELECT GetNextCtid() as NextCtid",
+    "query8": "CALL getShowCreateAllProcs('FUNCTION')"
+
+}
+
+### Tran Văn Nghĩa
+POST http://localhost:8081/purchase
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWVlYjhiOGJhNTQyMTUwMDQwYjY3YTgiLCJpc0FkbWluIjp0cnVlLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFbEg24gTmdoacyDYSAiLCJyb2xlIjoiQWRtaW4iLCJzdGF0dXMiOiJBY3RpdmUiLCJpc0FkbWluIjp0cnVlLCJkYXRhYmFzZXMiOlsia2V0b2FuX3h1YW5tYWkiLCJrZXRvYW5fbmhhdG5hbSIsImhoYjlqdHp4dDFzbWEyenIiLCJmc3didGxsNXRxZWh2enA5Iiwia2V0b2FuX2JhY2h0aGFuaCIsImlnM21qbHM1bXZnaHBhMnciLCJrZXRvYW5fa2luZ21pbmgiXSwic29jaWFsSWQiOiIiLCJfaWQiOiI1ZWVlYjhiOGJhNTQyMTUwMDQwYjY3YTgiLCJuYW1lIjoibmdoaWF0djIiLCJlbWFpbCI6IjVuZ2hpYXR2QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJER2VEtXeWR3ZS9MTU1xNGRNaEs1bC5xUDJKVWlqeTRULk82Q0lHSWpwcTJSSTNQd3RhRTEuIiwicmVnaXN0ZXJlZCI6IjIwMjAtMDYtMjFUMDE6MzI6NDAuNzIxWiIsIl9fdiI6MH0sImlhdCI6MTYxNTQzMTM2NywiZXhwIjoxNjE1NTE3NzY3fQ.AvbrDe-Y3VeuWefmfRXrAGvELBrGFGdWYMHYac5pU9Q
+Content-Type: application/json
+
+{
+    "username": "Nghĩa",
+    "password": "123456",
+    "email": "51nghiatv@gmail.com",
+    "items":{
+      [{"id": "5", "quantity":"1"},{"id": "6","quantity": "1"}] 
+      }
+}
+
+###########====================== LOGIN ======================
+### Vũ Anh
+# GET http://localhost:8081/api/users
+# GET http://localhost:8081/api/usersqls
+GET http://localhost:8081/api/hoadons/93740453
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjExZjNjZmM5ODNkOTFmZGMzMjA2NmEiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFbEg24gTmdoxKlhIiwicm9sZSI6IkFkbWluIiwic3RhdHVzIjoiUGVuZGluZyIsImFkbWluIjp0cnVlLCJkYXRhYmFzZXMiOlsia2V0b2FuX3h1YW5tYWksa2V0b2FuX25oYXRuYW0sbmdoaWFqc2Nfa2V0b2FuLGZzd2J0bGw1dHFlaHZ6cDksaWczbWpsczVtdmdocGEydyxuZ2hpYWpzY191cGxvYWQsaGhiOWp0enh0MXNtYTJ6cixuZ2hpYWpzY19uaGF0bmFtLG5naGlhanNjX2JhY2h0aGFuaCxrZXRvYW5fa2luZ21pbmgsa2V0b2FuX3VwbG9hZCJdLCJzb2NpYWxJZCI6IiIsImltYWdlIjoiIiwiX2lkIjoiNjIxMWYzY2ZjOTgzZDkxZmRjMzIwNjZhIiwibmFtZSI6Ik5naGnMg2EiLCJlbWFpbCI6Im5naGlhdHZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkYS5MZ3dYYnRYRkh4UjlrZ1MzNEV1ZTR2eTRDRlJQWC5abnVWMXVESTc2ZGd3Rlh2TzF5L1MiLCJyZWdpc3RlcmVkIjoiMjAyMi0wMi0xNlQxMDo0NzoxNi4wMDBaIn0sImlhdCI6MTY0NzQ3OTA0NCwiZXhwIjoxNjQ3NTY1NDQ0fQ.Vk34ybfchI2GXHBliYyLnIk0C92IklZwSGvauq34kUo
+Content-Type: application/json
+
+{
+      "id": 1,
+      "company": "155555mmmmmmmmmmm",
+      "taxcode": "3",
+      "address": "2",
+      "host": "4",
+      "username": "7",
+      "password": "8",
+      "dataname": "6",
+      "port": "3306",
+      "email": "5nghiatv@gmail.com"
+} 
+
+###########====================== 
+# POST http://localhost:8081/api/sendmail
+# GET http://localhost:8081/api/useremail/5nghiatv@gmail.com
+# GET http://localhost:8081/api/user/5ef075c8d60852591cef5f76
+# GET http://localhost:8081/api/setcolor/_variables1.scss
+# GET http://localhost:8081/api/test/{file: "Tran Van ",dropbox: false}
+# POST http://localhost:8081/api/vfpupload
+GET http://localhost:3000/hoadon/0304529821
+Content-Type: application/json
+
+{
+      "mailto": "nghiatv.acn@gmail.com",
+      "subject": "Ketoan.ACN Send link for change password",
+      "html": "Link thay đổi mật khẩu của bạn: https://sites.google.com/site/nghiatv02/",
+      "path": "./data/vfp/dataxx"
+} 
+
+
+### Tran Văn Nghĩa
+POST http://localhost:8081/api/invoice
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjExZjNjZmM5ODNkOTFmZGMzMjA2NmEiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFbEg24gTmdoxKlhIiwicm9sZSI6IkFkbWluIiwic3RhdHVzIjoiUGVuZGluZyIsImFkbWluIjp0cnVlLCJkYXRhYmFzZXMiOlsia2V0b2FuX3h1YW5tYWksa2V0b2FuX25oYXRuYW0sbmdoaWFqc2Nfa2V0b2FuLGZzd2J0bGw1dHFlaHZ6cDksaWczbWpsczVtdmdocGEydyxuZ2hpYWpzY191cGxvYWQsaGhiOWp0enh0MXNtYTJ6cixuZ2hpYWpzY19uaGF0bmFtLG5naGlhanNjX2JhY2h0aGFuaCxrZXRvYW5fa2luZ21pbmgsa2V0b2FuX3VwbG9hZCJdLCJzb2NpYWxJZCI6IiIsImltYWdlIjoiIiwiX2lkIjoiNjIxMWYzY2ZjOTgzZDkxZmRjMzIwNjZhIiwibmFtZSI6Ik5naGnMg2EiLCJlbWFpbCI6Im5naGlhdHZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkYS5MZ3dYYnRYRkh4UjlrZ1MzNEV1ZTR2eTRDRlJQWC5abnVWMXVESTc2ZGd3Rlh2TzF5L1MiLCJyZWdpc3RlcmVkIjoiMjAyMi0wMi0xNlQxMDo0NzoxNi4wMDBaIn0sImlhdCI6MTY0ODI1Njc0MCwiZXhwIjoxNjQ4MzQzMTQwfQ.8xh3t_9IcqAorrMMhxcrbtCeVi_0X0_TfeetM-hkrHw
+Content-Type: application/json
+
+{
+  "host" :"https://api-vinvoice.viettel.vn",
+  "username" :"0304529821",
+  "password" : "Tranmeji@1",
+  "patern" : "C22TVN",
+  "Uuid": "859f390a-1e59-4a05-9663-1e9ec7afdb8f",
+  "fromDate": "31/12/2020",
+  "toDate": "31/12/2020",
+  "ctid": "",
+  "supplierTaxCode":"0304529821",
+  "procedure1" : "createInvoiceDraft",
+  "procedure3" : "createInvoiceDraftP",
+  "procedure2" : "getListInvoice",
+  "procedure4" : "transactionUuid",
+  "procedure" : "createInvoiceDraftP"
+}
+
+### router.post('/invoice',invoice)
+#POST http://localhost:8081/api/dmkhohags
+GET http://localhost:8081/api/getenv/process.env.DB_DATABASE
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjExZjNjZmM5ODNkOTFmZGMzMjA2NmEiLCJ1c2VyIjp7InVzZXJuYW1lIjoiVHLhuqduIFbEg24gTmdoxKlhIiwicm9sZSI6IkFkbWluIiwic3RhdHVzIjoiUGVuZGluZyIsImFkbWluIjp0cnVlLCJkYXRhYmFzZXMiOlsia2V0b2FuX3h1YW5tYWksa2V0b2FuX25oYXRuYW0sbmdoaWFqc2Nfa2V0b2FuLGZzd2J0bGw1dHFlaHZ6cDksaWczbWpsczVtdmdocGEydyxuZ2hpYWpzY191cGxvYWQsaGhiOWp0enh0MXNtYTJ6cixuZ2hpYWpzY19uaGF0bmFtLG5naGlhanNjX2JhY2h0aGFuaCxrZXRvYW5fa2luZ21pbmgsa2V0b2FuX3VwbG9hZCJdLCJzb2NpYWxJZCI6IiIsImltYWdlIjoiIiwiX2lkIjoiNjIxMWYzY2ZjOTgzZDkxZmRjMzIwNjZhIiwibmFtZSI6Ik5naGnMg2EiLCJlbWFpbCI6Im5naGlhdHZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkYS5MZ3dYYnRYRkh4UjlrZ1MzNEV1ZTR2eTRDRlJQWC5abnVWMXVESTc2ZGd3Rlh2TzF5L1MiLCJyZWdpc3RlcmVkIjoiMjAyMi0wMi0xNlQxMDo0NzoxNi4wMDBaIn0sImlhdCI6MTY0OTA0NTgwOCwiZXhwIjoxNjQ5MDQ2MTA4fQ.zUkLzBLw3_h73E8jE9AhHcL1BQLC_157eOFNvQREnmg
+Content-Type: application/json
+
+{
+    "fromtodate": {
+      "pd_fromdate": "2016-01-01" ,
+      "pd_todate": "2016-12-31"
+    },
+    "company": {
+      "masothue": "3500102799",
+      "company": "Xuân Mai Corpt",
+      "address": "118/63 Bạch Đằng, P24, Bình Thạnh - HCM",
+      "dnlon": false
+    }
+}    
+
+### Tran Văn Nghĩa
+POST http://localhost:8081/api/login
+Content-Type: application/json
+
+{
+    "name": "Nghĩa",
+    "password": "111111",
+    "email": "nghiatv@gmail.com"
+}

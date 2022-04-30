@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<!-- CSS (load bootstrap from a CDN) -->
+<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+
+<!-- Không sửa thứ tự -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="/js/pagination.min.js"></script>
+
+<style>
+    body    { padding-top:10px; }
+    footer  { padding-top:20px; }
+</style>
+
+<head>
+  <title>Express VueJS & MongoDb</title>
+</head>
+
+<% if( !globalUser.socialId ){ %>
+    <%- include('./partials/_nav'); -%>
+<% }else { %>
+  <%- include('./partials/_header'); -%>
+  <%- include('./partials/_add_btn'); -%>
+<% } %>
+
+<div id="message" class="alert alert-success" style="display: none;">Your message has been sent</div>
+<!-- <div id="message-war" class="alert alert-warning" style="display: none;">Your message has been sent</div> -->
+<%- include('./partials/messages'); -%>
+
+<body onload="myOnloadFunc()" class="container">
+      <%- body %>
+</body>
+
+
+<footer >
+  <p class="text-center text-muted"> &copy<script>document.write( new Date().getUTCFullYear() );</script> XuânMai.Corpt</p>
+</footer>
+
+
+</html>
+
+<%- include('./partials/functions'); -%>
+

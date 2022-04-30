@@ -1,0 +1,37 @@
+<!-- views/pages/index.ejs -->
+
+<style>
+    .vuelogo {text-align: right;}
+    .company-info {text-align: right;}
+    .company-info li {list-style: none; }
+    .row { margin-right: 20px;
+            margin-left: 20px;   }
+</style>
+
+    <main>
+        <div class="jumbotron">
+            <div class='row'>
+                <h1>This is great</h1>
+            </div>
+            <div class='row'>
+                <% if(global.__user){ %>
+                    <p>Welcome <strong><%= global.__user.name %> </strong>to templating  EJS - Express JS & MongoDB</p>
+                <% }%>
+                <% if(!global.__user){ %>
+                    <p>Welcome to templating using EJS - Express JS & MongoDB</p>
+                <% }%>
+
+            </div>
+            <div class='row'>
+                <img class="vuelogo" alt="Vue logo" src="/mongodb.png">
+                <div class="company-info" >
+                    <h4>Trần Văn Nghĩa</h4>
+                    <ul>
+                        <li><i class="fa fa-road"></i> 118/63 Bạch Đằng, P.24, Q.BT- HCM </li>
+                        <li><i class="fa fa-phone"></i> (084) 0903917963</li>
+                        <li><i class="fa fa-envelope"></i> Nghiatv@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>

@@ -1,0 +1,72 @@
+
+    <main>
+        <h3>Update User</h3>
+        <form action="/user/update" method="POST" autocomplete="off">
+            <input type="hidden" name="_id" value="<%= user._id %>" >
+            <div class="form-row">
+                <div class="form-group col-md-3" style="padding-left: 0px;" >
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Name" value="<%= user.name %>">
+                    <div class="text-danger"> <%= user.nameError %></div>
+                </div>
+                <div class="form-group col-md-3" style="padding-left: 0px;" >
+                    <label>User Name</label>
+                    <input type="text" class="form-control" name="username" placeholder="User Name" value="<%= user.username %>">
+                    <div class="text-danger"> <%= user.usernameError %></div>
+                </div>
+                <div class="form-group col-md-3" style="padding-left: 0px;" >
+                    <label>Email</label>
+                    <input type="text" class="form-control" name="email" placeholder="Email" value="<%= user.email %>">
+                    <div class="text-danger"> <%= user.emailError %></div>
+                </div>
+                <div class="form-group col-md-3" style="padding-left: 0px;" >
+                    <label>Password</label>
+                    <input type="text" class="form-control" name="password" placeholder="password" value="<%= user.password %>">
+                </div>
+            </div>
+            
+            <div class="form-row" style="float: left;">
+                    <div class="form-group col-md-3" style="padding-left: 0px;" >
+                        <label>Status</label>
+                        <input type="text" class="form-control" name="status" placeholder="Status" value="<%= user.status %>">
+                    </div>
+
+                    <div class="form-group col-md-3" style="padding-left: 0px;" >
+                        <label>Role</label>
+                        <input type="text" class="form-control" name="role" placeholder="Role" value="<%= user.role %>">
+                    </div>
+
+                    <div class="form-group col-md-3" style="padding-left:7px;" >
+                        <label for="admin"><strong>Is Admin</strong></label> &nbsp;&nbsp;
+                        <% if(user.admin==true){ %>
+                            <input type="checkbox" id="admin" name="admin" checked>
+                            <% } else { %>
+                            <input type="checkbox" id="admin" name="admin">
+                        <% } %>
+                    </div>
+    
+                    <div class="form-group col-md-3" style="text-align: right; padding-right: 15px;" >
+                        <label>Database</label>
+                    </div>
+   
+            </div>
+
+            <div class="form-row" >
+                <div class="form-group col-md-4" style="padding-left: 0px;" ></div>
+                    <select style="width:25em;" name="databases[]" class="multi-select" multiple="" id="databases" >
+                    <% user.databases.map((dat)=>{ %>
+                        <option  value="<%= dat %>"><%= dat %>    </option>
+                    <% }) %>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-8" style="padding-left: 0px;  text-align: left;" >
+                    <button name='addnew' type="submit" class="btn btn-info"><i class="fa fa-file-o"></i> Add New</button>
+                    <a class="btn btn-warning" href="/users"><i class="fa fa-list-alt"></i> View All</a>
+                    <button <%=     btndisabled %> name='update' type="submit" class="btn btn-info"><i class="fa fa-database"></i> Update</button>
+                </div>
+            </div>
+
+        </form>
+
+    </main>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mongo File Uploads</title>
+        <meta name="description" content="This is the description">
+        <link rel="stylesheet" href="/stripe-store/styles.css" />
+        <link rel="stylesheet" href="/stripe-store/cart_details.css" />
+        
+    </head>
+    <body>
+        <h2 class="text-center display-5 my-3">Mongo File Uploads</h1>
+        <form action="/upl/upload" method="POST" enctype="multipart/form-data">
+          <div class="custom-file mb-2">
+            <div class="form-group btn btn-warning">
+              <input type="file" name="file" id="file" accept="image/x-png,image/jpeg" />
+            </div>
+            <div class="form-group btn btn-info">
+              <input type="submit" value="Upload">
+             </div>
+
+          </div>
+        </form>
+        <hr>
+
+        <section class="container content-section">
+            <h2 class="section-header">MUSIC & PICTURE</h2>
+            <div class="shop-items">
+            <% if(files){ %>
+              <% files.forEach(function(file) { %>
+                <div class="row mt-5 hvr_img">
+                  <% if(file.isImage) { %>
+                    <div class="col-12">
+                        <div class="cart_btn">
+                            <img src="upl/image/<%= file.filename %>" alt="image missing" class="img-fluid img_rad"  style='float:left;height: 300px; width: 400px; object-fit: contain'>
+                            <% } else { %>
+                            <%= file.filename %>
+                                <% } %>
+                                <form method="POST" action="upl/files/<%= file._id %>?_method=DELETE">
+                                    <div class="middle">
+                                        <button class="btn btn-primary btn_cart" onclick="return confirm('Are you sure to delete this picture ?');">Delete</button>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            <% } else { %>
+                <p>No files to show</p>
+            <% } %>
+                
+
+            </div>
+        </section>
+        <br>  
+
+        <footer class="main-footer">
+            <div class="container main-footer-container">
+                <h3 class="band-name">The Generics</h3>
+                <ul class="nav footer-nav" style="display: block;">
+                    <li>
+                        <a href="https://www.youtube.com" target="_blank">
+                            <img src="/stripe-store/Images/YouTube Logo.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.spotify.com" target="_blank">
+                            <img src="/stripe-store/Images/Spotify Logo.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com" target="_blank">
+                            <img src="/stripe-store/Images/Facebook Logo.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

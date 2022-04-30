@@ -1,0 +1,40 @@
+
+    <main>
+        <h3><% if(btndisabled) { %> Add Customer <% } else {  %> Edit Customer <% }  %>
+        </h3>
+
+        <form action="/mysql/customer" method="POST" autocomplete="off">
+            <input type="hidden" name="id" value="<%= customer.id %>" >
+            <div class="form-group">
+                <label>Công ty</label>
+                <input type="text" class="form-control" name="company"  value="<%= customer.company %>">
+                <div class="text-danger">
+                    <%= customer.companyError %></div>
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" class="form-control" name="address"  value="<%= customer.address %>">
+                <div class="text-danger">
+                    <%= customer.addresslError %></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6" style="padding-left: 0px;" >
+                    <label>Mã số thuế</label>
+                    <input type="text" class="form-control" name="maso"  value="<%= customer.maso %>">
+                </div>
+                <div class="form-group col-md-6" style="padding-right: 0px;" >
+                    <label>Ghi chú</label>
+                    <input type="text" class="form-control" name="ghichu"  value="<%= customer.ghichu %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                <button name='addnew' type="submit" class="btn btn-info"><i class="fa fa-file-o"></i> Add New</button>
+                <a class="btn btn-warning" href="/mysql/customer"><i class="fa fa-list-alt"></i> View All</a>
+                <button <%= btndisabled %> name='update' type="submit" class="btn btn-info"><i class="fa fa-database"></i> Update</button>
+
+            </div>
+        </form>
+
+    </main>
+
