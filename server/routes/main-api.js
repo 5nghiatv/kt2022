@@ -164,6 +164,7 @@ const {
 } = require('../controllers/kt_tinhtoan')
 
 const { vfpUpload } = require('../../data/vfp/vfpupload')
+const { googleUpload, googleDelete } = require('../controllers/googleapis')
 
 // ============== TẮT sẽ tạm thời Tắt Đăng Nhập ==========
 router.use(auth, function (req, res, next) {
@@ -173,8 +174,10 @@ router.use(auth, function (req, res, next) {
 //router.get('/users/:filename', (req, res) => {
 // products dùng trong e-commerce/productApi
 
-router.post('/vfpupload', vfpUpload)
+router.post('/googleupload', googleUpload)
+router.post('/googledelete', googleDelete)
 
+router.post('/vfpupload', vfpUpload)
 router.post('/sendmail', sendmail)
 router.get('/restoreData/:filedropbox', restoreData)
 router.post('/getInhoadon', getInhoadon)

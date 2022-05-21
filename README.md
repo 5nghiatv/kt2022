@@ -1,17 +1,41 @@
+
 ===========================================
-npm install -g @vue/cli --unsafe-perm
-npm install -g yarn --unsafe-perm
-npm install --unsafe-perm
-npm cache clean --force --unsafe-perm
+echo $PATH  ( Xem PATH )
+you need to add or edit a .zshrc file or a .bash_profile or .bashrc in your home directory
+touch .zshrc
+nano .zshrc ( add:  export PATH=$PATH:/Users/yourusername/bin)
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+refresh the .zshrc : source .zshrc
+================
+ERROR: EACCES: permission denied, access '/usr/local/lib/node_modules/
+== Chỉ cần run: sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+mkdir ~/.npm-global ( /Users/your-user-name/. bash_profile )
+npm config set prefix '~/.npm-global'
+== Nhập mật khẩu xong sẽ cho run:  npm i -g xxxxx 
+sudo nano ~/.bash_profile  ==>
+( Paste :  export PATH=~/.npm-global/bin:$PATH )
+# Save the file in nano by clicking ‘control’ +’o’ and confirming the name of the file is .zshrc by hitting return. And the ‘control’+’x’ to exit nano.
+source ~/.bash_profile  ( RUN file refresh config)
+# you can use the corresponding ENV variable (e.g. if you don't want to modify ~/.bash_profile):
+NPM_CONFIG_PREFIX=~/.npm-global
+===========================================
+Command (or Cmd) ⌘   Shift ⇧  Option (or Alt) ⌥ 
+Control (or Ctrl) ⌃   Caps Lock ⇪  Fn
+Option-Command-Esc: Force quit an app.
+===========================================
+
 rm -r node_modules
 npm install
 npm -v || yarn -v
 git --version
 vue -V
-
+heroku ps -a kt2022  - Xem số giờ sử dụng trong tháng / 550h+450h = 1000h
 ===========================================
 
 docker-compose down
+docker-compose up -d
+
 docker rm -f $(docker ps -a -q)
 
 
@@ -44,8 +68,8 @@ docker run -dp 3000:3000 `
    sh -c "yarn install && yarn run dev"
 
 
-docker exec -it lamp_database mysql -u root -p
-GRANT ALL PRIVILEGES ON *.* TO 'docker'@'%';
+docker exec -it lamp-database mysql -u root -p
+GRANT ALL PRIVILEGES ON *.* TO 'docker'@'%'; flush privileges; exit;
 
 docker exec -it lamp-redis bash
 

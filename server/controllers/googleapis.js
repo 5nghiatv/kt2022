@@ -63,7 +63,7 @@ const deleteFile = async function (fileId) {
     const deleteFile = await drive.files.delete({
       fileId: fileId,
     })
-    console.log(deleteFile.data, deleteFile.status)
+    console.log('Deleted File id : ' + fileId, 'status Code: ' + deleteFile.status)
   } catch (error) {
     console.error(error)
   }
@@ -88,13 +88,24 @@ const setFilePublic = async function (fileId) {
   }
 }
 
-uploadFile({
-  pathfilename:
-    'c:/Users/nghia/OneDrive/MySQL/_SOFT - MySQL/_PRO-VUE-ADMIN/AA/GhiNho.txt',
-  mimetype: 'application/zip',
-  share: true,
-})
+exports.googleUpload = function (req, res) {
+  //console.log(req.body)
+  const { pathfilename } = req.body
+  mimetype = req.body.mimetype || 'application/zip'
+  share = req.body.share || true
+  if (!fs.existsSync(pathfilename)) {
+    return res.status(500).json({
+      success: false,
+      message: 'File not exist: ' + pathfilename,
+    })
+  }
+  uploadFile({ pathfilename, mimetype, share, })
+}
 
+exports.googleDelete = function (req, res) {
+  const { id } = req.body
+  deleteFile(id)
+}
 //deleteFile('15-SvwsVyYRGfkGDtzSOEtp5g0nwaUyJp')
 
 // - application/octet-stream, application/pdf, application/pkcs8, pplication/zip
