@@ -22,7 +22,7 @@
     "start1": "nodemon server.js",
     "test": "nodemon test_.js",
     "dev": "concurrently \"npm:start1\" \"npm:serve --fix\"",
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 8082",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
