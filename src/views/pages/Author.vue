@@ -59,8 +59,23 @@
             </p> -->
 
             <p>
-              <label>Chọn file</label>
+              <label>
+                <a
+                  style="text-decoration: underline; cursor: pointer"
+                  title="Click nhập file Upload to google"
+                  @click="ingoogle = !ingoogle"
+                  >Nhập hoặc chọn file</a
+                ></label
+              >
               <input
+                v-if="ingoogle"
+                v-model="fgoogle"
+                type="text"
+                name="fgoogle"
+                id="fgoogle"
+              />
+              <input
+                v-if="!ingoogle"
                 class="files"
                 type="file"
                 ref="files"
@@ -138,6 +153,8 @@ export default {
   data() {
     return {
       files: [],
+      fgoogle: '',
+      ingoogle: false,
       colchecked: true,
       edit: false,
       todos: [],
@@ -191,7 +208,27 @@ export default {
     this.getFiretore()
   },
   methods: {
+    uploadGoogle() {
+      if (!this.fgoogle) return alert('Chưa nhập đường dẩn file upload !')
+      this.$apiAcn
+        .post('googleupload', {
+          pathfilename: this.fgoogle,
+          mimetype: 'application/zip',
+          share: true,
+        })
+        .then((ret) => {
+          let mess = ret.message || 'Upload file to Google thành công.'
+          this.$toastr.success('', mess)
+          console.log(111, ret)
+        })
+        .catch((error) => {
+          let mess = error.message || 'Upload file to Google KHÔNG thành công.'
+          this.$toastr.error('', mess)
+          console.log(222, error)
+        })
+    },
     uploadVuejs() {
+      if (this.ingoogle) return this.uploadGoogle()
       this.files = this.$refs.files.files
       if (this.files.length != 0) {
         for (let i = 0; i < this.files.length; i++) {

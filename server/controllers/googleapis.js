@@ -63,7 +63,10 @@ const deleteFile = async function (fileId) {
     const deleteFile = await drive.files.delete({
       fileId: fileId,
     })
-    console.log('Deleted File id : ' + fileId, 'status Code: ' + deleteFile.status)
+    console.log(
+      'Deleted File id : ' + fileId,
+      'status Code: ' + deleteFile.status,
+    )
   } catch (error) {
     console.error(error)
   }
@@ -88,7 +91,7 @@ const setFilePublic = async function (fileId) {
   }
 }
 
-exports.googleUpload = function (req, res) {
+exports.googleUpload = async function (req, res) {
   //console.log(req.body)
   const { pathfilename } = req.body
   mimetype = req.body.mimetype || 'application/zip'
@@ -99,7 +102,12 @@ exports.googleUpload = function (req, res) {
       message: 'File not exist: ' + pathfilename,
     })
   }
-  uploadFile({ pathfilename, mimetype, share, })
+  let ret = await uploadFile({ pathfilename, mimetype, share })
+  return res.status(200).json({
+    success: true,
+    message: 'Upload thành công.',
+    data: ret,
+  })
 }
 
 exports.googleDelete = function (req, res) {

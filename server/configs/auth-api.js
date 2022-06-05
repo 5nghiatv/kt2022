@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 module.exports = function (req, res, next) {
   if (
-    '/api/testdb -/api/connects -/api/login -/api/register -/users/login -/api/refreshtoken -/users/register'.includes(
+    '/api/googleupload-/api/testdb -/api/connects -/api/login -/api/register -/users/login -/api/refreshtoken -/users/register'.includes(
       req.originalUrl,
     )
   ) {

@@ -119,7 +119,7 @@
 
                 <div class="wrapper_">
                   <div class="danhmuc">
-                    <label style="color: blueviolet">
+                    <label style="color: blueviolet; cursor: pointer">
                       <a
                         title="Refresh Database..."
                         v-on:click="readDanhmuc('connects', true)"
@@ -129,7 +129,7 @@
                     >
                   </div>
                   <div class="author">
-                    <label style="color: blueviolet">
+                    <label style="color: blueviolet; cursor: pointer">
                       <a title="Liên hệ tác giả..." @click="contactAuthor()">
                         Author...</a
                       ></label
