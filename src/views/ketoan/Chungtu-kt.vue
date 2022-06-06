@@ -186,6 +186,7 @@
                       <th>Số hóa đơn</th>
                       <th>Ngày tháng</th>
                       <th>Thuế suất</th>
+                      <th>Công ty</th>
                       <th>Số tiền</th>
                       <th>Thuế gtgt</th>
                       <th>Thành tiền</th>
@@ -199,6 +200,7 @@
                       <td>{{ hoadon.sohd }}</td>
                       <td>{{ formatDate(hoadon.ngay) }}</td>
                       <td style="text-align: center">{{ hoadon.thuesuat }}</td>
+                      <td>{{ getCompany(hoadon.masothue) }}</td>
                       <td style="text-align: right">{{ hoadon.giaban }}</td>
                       <td style="text-align: right">{{ hoadon.thuegtgt }}</td>
                       <td style="text-align: right; font-weight: bold">
@@ -1141,6 +1143,12 @@ export default {
       })
       if (company.length > 0 && !this.hoadon.diengiai)
         this.hoadon.diengiai = company[0].company
+    },
+    getCompany(masothue) {
+      const company = this.danhmucCustomer.filter((item) => {
+        return item.maso == masothue
+      })
+      return company.length > 0 ? company[0].company : ''
     },
     getTenhang(mahang) {
       const hanghoa = this.danhmucTenhang.filter((item) => {
