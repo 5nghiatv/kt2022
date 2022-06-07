@@ -84,13 +84,12 @@ router.get('/backupdb', async (req, res) => {
     }
 
     if (listColls.length - 1 == index + 1) {
-      client.close()
       console.log(`Đã sao lưu ${index + 1}/${listColls.length - 1} collection.`)
       res.status(200).json({ success: listbk })
     }
   }
   // close connection
-  if (listColls.length == 0) client.close()
+  client.close()
 })
 
 //----------------------------------------

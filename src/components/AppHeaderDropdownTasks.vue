@@ -97,8 +97,7 @@ export default {
     const router = useRouter()
     const store = useStore()
     const routeExp = () => {
-      // console.log(this);
-      location.href = location.origin + '/exp'
+      location.href = process.env.VUE_APP_URL_LOCAL + '/exp'
     }
 
     const calRouter = (query) => {

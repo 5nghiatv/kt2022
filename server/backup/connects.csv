@@ -9,4 +9,4 @@ _id,company,taxcode,address,host,username,password,database,__v,active,port,emai
 6056b804bd486477f1887692,Công ty Gổ Nhất Nam (Hawk),0100104443004,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,nghiajsc_root,nghia@tv,nghiajsc_nhatnam,0,false,3306,
 605aa1522eee3bfcc8a1720d,Công ty Bách Thành (hawk),0304529821,"118/63 Bạch Đằng,P24,Bình Thạnh - HCM",localhost,nghiajsc_root,nghia@tv,nghiajsc_bachthanh,0,false,3306,
 606e5e0411c51e32a095b557,Công ty KingMinh (local),0100105937002,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,root,nghia@tv,ketoan_kingminh,0,false,3306,
-613ec100c21dea170cdaaa0a,Công ty Vfp Upload (local),0100105937002,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,root,nghia@tv,ketoan_upload,0,false,3306,
+613ec100c21dea170cdaaa0a,Công ty Vfp Upload (local),0100109106,"118/63 Bạch Đằng, P24, Bình Thạnh - HCM",localhost,root,nghia@tv,ketoan_upload,0,false,3306,
