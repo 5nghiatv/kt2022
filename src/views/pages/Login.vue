@@ -205,7 +205,8 @@ export default {
         'Quí 2',
         'Quí 3',
         'Quí 4',
-        '6 tháng',
+        '6 tháng đầu năm',
+        '6 tháng cuối năm',
         'Năm',
       ],
       danhap: {
@@ -279,9 +280,13 @@ export default {
           this.fromtodate.pd_fromdate = year + '-10-01'
           this.fromtodate.pd_todate = year + '-12-31'
           break
-        case '6 tháng': // 6 tháng đầu năm
+        case '6 tháng đầu năm': // 6 tháng đầu năm
           this.fromtodate.pd_fromdate = year + '-01-01'
           this.fromtodate.pd_todate = year + '-06-30'
+          break
+        case '6 tháng cuối năm': // 6 tháng cuối năm
+          this.fromtodate.pd_fromdate = year + '-07-01'
+          this.fromtodate.pd_todate = year + '-12-31'
           break
         default:
           // Cả năm
