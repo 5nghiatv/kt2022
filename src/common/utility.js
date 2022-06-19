@@ -398,11 +398,8 @@ export default {
         let totalPage = parseInt(collection[0].children[2].innerHTML.split('of').join('')) 
         collection[0].children[1].value = collection[0].children[1].value == 1 ? totalPage : 1
         collection[0].children[1].focus()
-        // console.log(
-        //   2222,
-        //   'this.$options.components.VueGoodTable',
-        //   this.$options.components.VueGoodTable,
-        // )
+        collection[0].children[1].dispatchEvent(new KeyboardEvent('keydown',{'key':'Enter'}));
+        collection[0].children[1].dispatchEvent(new KeyboardEvent('keyup',{'key':'Enter'}));
       }
     },
     mySearchNoZero() {
