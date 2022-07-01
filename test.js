@@ -538,16 +538,10 @@ global.runQuerySyncPool = async function (query, params) {
 }
 
 //bb()
-//cc()
+cc()
 async function cc() {
   let query = `SELECT * FROM dmtenkho`
   let kq = await runQuerySyncPool(query)
   console.log(111, kq, kq.length)
 }
 
-let evalEnv = null
-try {
-  evalEnv = eval(req.params.env)
-} catch (err) {}
-
-console.log(evalEnv)

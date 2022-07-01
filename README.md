@@ -113,18 +113,12 @@ in GIT bash backup extens VSC
 ========================================
 $ code --list-extensions | % { "code --install-extension $_" }
 
-abusaidm.html-snippets
-christian-kohler.npm-intellisense
-christian-kohler.path-intellisense
-CoenraadS.bracket-pair-colorizer
-dbaeumer.vscode-eslint
-esbenp.prettier-vscode
-humao.rest-client
-ms-azuretools.vscode-docker
-octref.vetur
-ritwickdey.LiveServer
-
-code --install-extension ms-azuretools.vscode-docker
+code --install-extension christian-kohler.npm-intellisense
+code --install-extension christian-kohler.path-intellisense
+code --install-extension CoenraadS.bracket-pair-colorizer
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension esbenp.prettier-vscode
+code --install-extension humao.rest-client
 code --install-extension octref.vetur
 code --install-extension ritwickdey.LiveServer
 code --install-extension Shan.code-settings-sync
@@ -132,6 +126,8 @@ code --install-extension steoates.autoimport
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension vscode-icons-team.vscode-icons
+code --install-extension Vue.volar
+
 ========================================
 
 // app.use(cors());

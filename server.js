@@ -193,7 +193,7 @@ global.choiceConnect = function () {
     database: process.env.DB_DATABASE,
     port: process.env.DB_PORT,
     connect_timeout: 30000,
-    connectionLimit: 10,
+    connectionLimit: 8,
     idleTimeoutMillis: 30000,
     multipleStatements: true,
   }
