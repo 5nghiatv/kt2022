@@ -111,6 +111,14 @@ The client vue app will be making api calls to the nodeapp(server) over cors. Yo
 
 in GIT bash backup extens VSC
 ========================================
+<!-- Upload những thiết đặt, extensions đã cài cho VSCode
+Dùng phím tắt Shift + Alt + U hoặc search từ command Palette, search từ sync
+Nó sẽ yêu cầu nhập giá trị token vừa mới tạo
+
+Download các thiết từ gist về
+Dùng phím tắt Shift + Alt + D, hoặc gọi từ command palette
+Nó sẽ yêu cầu nhập lại token và gist id đã tạo, điền vào, xong!  -->
+
 $ code --list-extensions | % { "code --install-extension $_" }
 
 code --install-extension christian-kohler.npm-intellisense
