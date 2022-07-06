@@ -13,6 +13,7 @@
                     <CFormInput
                       class="form-control"
                       :class="{ 'is-valid': testValidator('company') }"
+                      :maxlength="100"
                       v-model="todo.company"
                     />
                   </CInputGroup>
@@ -46,6 +47,7 @@
                     <CFormInput
                       class="form-control"
                       :class="{ 'is-valid': testValidator('address') }"
+                      :maxlength="150"
                       v-model="todo.address"
                     />
                   </CInputGroup>

@@ -112,30 +112,31 @@ The client vue app will be making api calls to the nodeapp(server) over cors. Yo
 in GIT bash backup extens VSC
 ========================================
 <!-- Upload những thiết đặt, extensions đã cài cho VSCode
-Dùng phím tắt Shift + Alt + U hoặc search từ command Palette, search từ sync
-Nó sẽ yêu cầu nhập giá trị token vừa mới tạo
+Dùng phím tắt ====> Shift + Alt + U 
+hoặc search từ command Palette, search từ sync ,Nó sẽ yêu cầu nhập giá trị token vừa mới tạo
 
 Download các thiết từ gist về
-Dùng phím tắt Shift + Alt + D, hoặc gọi từ command palette
-Nó sẽ yêu cầu nhập lại token và gist id đã tạo, điền vào, xong!  -->
+Dùng phím tắt ====> Shift + Alt + D 
+hoặc gọi từ command palette , Nó sẽ yêu cầu nhập lại token và gist id đã tạo, điền vào, xong!  -->
 
-$ code --list-extensions | % { "code --install-extension $_" }
-
-code --install-extension christian-kohler.npm-intellisense
-code --install-extension christian-kohler.path-intellisense
-code --install-extension CoenraadS.bracket-pair-colorizer
-code --install-extension dbaeumer.vscode-eslint
-code --install-extension esbenp.prettier-vscode
-code --install-extension humao.rest-client
-code --install-extension octref.vetur
-code --install-extension ritwickdey.LiveServer
-code --install-extension Shan.code-settings-sync
-code --install-extension steoates.autoimport
-code --install-extension streetsidesoftware.code-spell-checker
-code --install-extension VisualStudioExptTeam.vscodeintellicode
-code --install-extension vscode-icons-team.vscode-icons
-code --install-extension Vue.volar
-
+Extensions Added:
+  autoimport v1.5.4
+  code-settings-sync v3.4.3
+  code-spell-checker v2.2.3
+  html-snippets v0.2.1
+  LiveServer v5.7.5
+  npm-intellisense v1.4.2
+  path-intellisense v2.8.1
+  prettier-vscode v9.5.0
+  remote-containers v0.238.3
+  rest-client v0.25.0
+  theme-cobalt2 v2.2.5
+  vetur v0.35.0
+  vscode-docker v1.22.0
+  vscode-eslint v2.2.2
+  vscode-icons v11.12.0
+  vscodeintellicode v1.2.22
+--------------------
 ========================================
 
 // app.use(cors());
