@@ -108,4 +108,7 @@ export default {
     transform: rotate(360deg);
   }
 }
+.modal-content {
+    width: 120%;
+}    
 </style>

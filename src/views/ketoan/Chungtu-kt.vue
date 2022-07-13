@@ -142,6 +142,13 @@
                       title="Download và Cập nhật số Hóa đơn"
                       ><i class="fa fa-cloud-download" aria-hidden="true"></i>
                     </CButton>
+                    <CButton
+                      style="float: right; margin-right: 5px"
+                      class="btn btn-outline-info btn-sm"
+                      @click="showModalForm(1)"
+                      title="Download và bổ sung Hóa đơn"
+                      ><i class="fa fa-cloud-download" aria-hidden="true"></i>++
+                    </CButton>
 
                     <CButton
                       style="float: right; margin-right: 5px"
@@ -174,6 +181,14 @@
                     :customer="customer"
                     v-on:submit-form="customerAction"
                   />
+                </modal>
+                <modal
+                  :header="'Download Invoices'"
+                  :isShow="showModal_"
+                  v-if="showModal_"
+                  @close="showModal = false"
+                >
+                  <invoice-form v-on:submit-form="invoiceAction" />
                 </modal>
 
                 <table
@@ -969,6 +984,7 @@ import Modal from './modal/Modal.vue'
 import CustomerForm from './modal/CustomerForm'
 import AccountForm from './modal/AccountForm'
 import ProductForm from './modal/ProductForm'
+import InvoiceForm from './modal/InvoiceForm'
 import { mapState, mapActions } from 'vuex'
 //import dmtkhoan from '@/container/dmtkhoan'
 import Multiselect from '@vueform/multiselect'
@@ -984,6 +1000,7 @@ export default {
     CustomerForm,
     AccountForm,
     ProductForm,
+    InvoiceForm,
     //dmtkhoan,
     Multiselect,
   },
@@ -993,6 +1010,7 @@ export default {
       customer: new Object(),
       account: new Object(),
       showModal: false,
+      showModal_: false,
       tinhTienHangHoadon: false,
       copyMultict: false,
       mess_print: 'Phiếu thu chi',
@@ -1166,8 +1184,9 @@ export default {
       if (e.submitter.id == 'update') this.updateTodo()
     },
 
-    showModalForm: function () {
-      this.showModal = true
+    showModalForm: function (opt) {
+      if (!opt) this.showModal = true
+      else this.showModal_ = true
     },
     productAction: function (product) {
       //this.loading = true;
@@ -1230,6 +1249,26 @@ export default {
           this.$toastr.warning('', 'Tạo tài khoản KHÔNG mới thành công.')
           console.log(err)
         })
+    },
+    invoiceAction: function (invoices, diengiai) {
+      //this.loading = true;
+      this.showModal_ = false
+      console.log('Add invoices: ', invoices, diengiai)
+      if (invoices.length > 0) {
+        invoices.forEach((item) => {
+          //console.log(item)
+          this.hoadon = {
+            diengiai: diengiai || item.buyerName || 'Bán hàng',
+            sohd: item.invoiceSeri + '-' + item.invoiceNumber,
+            ngay: moment(item.createTime, 'DD-MM-YYYY').format('YYYY-MM-DD'),
+            thuesuat: item.taxRate,
+            masothue: item.buyerTaxCode,
+            giaban: item.totalBeforeTax,
+            thuegtgt: item.taxAmount,
+          }
+          this.createHoadon()
+        })
+      }
     },
     GanTienHangHoadon(tongtien = 0, tienthue = 0) {
       if (!this.tinhTienHangHoadon) return
