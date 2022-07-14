@@ -126,14 +126,13 @@
                       id="modal"
                       title="Bổ sung Khách hàng"
                       ><i class="fa fa-user-plus" aria-hidden="true"></i>
-                      Cust..
                     </CButton>
                     <CButton
                       style="float: right; margin-right: 0px"
                       class="btn btn-outline-info btn-sm"
                       @click="uploadPreviewInvoice(true)"
                       title="Upload Hóa đơn lên Server"
-                      ><i class="fa fa-cloud-upload" aria-hidden="true"></i>Up
+                      ><i class="fa fa-cloud-upload" aria-hidden="true"></i>
                     </CButton>
                     <CButton
                       style="float: right; margin-right: 5px"
@@ -144,19 +143,19 @@
                     </CButton>
                     <CButton
                       style="float: right; margin-right: 5px"
+                      class="btn btn-outline-warning btn-sm"
+                      @click="uploadPreviewInvoice(false)"
+                      title="Xem trước Hóa đơn"
+                      ><i class="fa fa-eye" aria-hidden="true"></i>
+                    </CButton>
+                    <CButton
+                      style="float: right; margin-right: 5px"
                       class="btn btn-outline-info btn-sm"
                       @click="showModalForm(1)"
                       title="Download và bổ sung Hóa đơn"
                       ><i class="fa fa-cloud-download" aria-hidden="true"></i>++
                     </CButton>
 
-                    <CButton
-                      style="float: right; margin-right: 5px"
-                      class="btn btn-outline-warning btn-sm"
-                      @click="uploadPreviewInvoice(false)"
-                      title="Xem trước Hóa đơn"
-                      ><i class="fa fa-eye" aria-hidden="true"></i>View
-                    </CButton>
                   </CCol>
                   <CCol md="3">
                     <CInputGroup class="mb-3">
@@ -1250,24 +1249,43 @@ export default {
           console.log(err)
         })
     },
-    invoiceAction: function (invoices, diengiai) {
+    invoiceAction: async function (invoices, diengiai) {
       //this.loading = true;
       this.showModal_ = false
       console.log('Add invoices: ', invoices, diengiai)
       if (invoices.length > 0) {
+        let query = ''
         invoices.forEach((item) => {
           //console.log(item)
-          this.hoadon = {
-            diengiai: diengiai || item.buyerName || 'Bán hàng',
-            sohd: item.invoiceSeri + '-' + item.invoiceNumber,
-            ngay: moment(item.createTime, 'DD-MM-YYYY').format('YYYY-MM-DD'),
-            thuesuat: item.taxRate,
-            masothue: item.buyerTaxCode,
-            giaban: item.totalBeforeTax,
-            thuegtgt: item.taxAmount,
-          }
-          this.createHoadon()
+          query +=
+            'INSERT INTO hoadon (`id`,`ctid`,`sohd`,`ngay`,`diengiai`,`masothue`,`thuesuat`,`giaban`,`thuegtgt`,`mausohd`,`mamauhd`,`sohdong`,`ngayhdong`,' +
+            '`hinhthuctt`,`diemgiao`,`diemnhan`,`sovandon`,`socontaine`,`dvanchuyen`,`dienthoai`,`tygia` ) ' +
+            'VALUES (null,"' +
+            this.todo.ctid +
+            '","' +
+            (item.invoiceSeri + '-' + item.invoiceNumber) +
+            '","' +
+            moment(item.createTime, 'DD-MM-YYYY').format('YYYY-MM-DD') +
+            '","' +
+            (diengiai ||
+              item.buyerName + ' (' + item.buyerTaxCode + ')' ||
+              'Bán hàng') +
+            '","' +
+            item.buyerTaxCode +
+            '","' +
+            item.taxRate +
+            '",' +
+            item.totalBeforeTax.split('.').join('').split(',').join('.') +
+            ',' +
+            item.taxAmount.split('.').join('').split(',').join('.') +
+            ',"","","","0001-01-01","","","","","","","",0 );'
         })
+        // console.log(query)
+        let ret = await this.runMysql(query, query)
+        if (ret) {
+          console.log(ret)
+          this.getHoadon()
+        }
       }
     },
     GanTienHangHoadon(tongtien = 0, tienthue = 0) {
@@ -2588,6 +2606,7 @@ export default {
       'GET_DM_CUSTOMER',
       'GET_DM_TENHANG',
       'GET_DM_KHOHANG',
+      'runMysql',
     ]),
     downdInvoiceNumber() {
       this.$store.commit('set', ['isLoading', true])
