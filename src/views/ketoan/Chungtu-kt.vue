@@ -148,14 +148,16 @@
                       title="Xem trước Hóa đơn"
                       ><i class="fa fa-eye" aria-hidden="true"></i>
                     </CButton>
-                    <CButton
+                    <CLoadingButton
                       style="float: right; margin-right: 5px"
-                      class="btn btn-outline-info btn-sm"
+                      size="sm"
+                      color="info"
+                      :timeout="2000"
+                      variant="outline"
                       @click="showModalForm(1)"
-                      title="Download và bổ sung Hóa đơn"
+                      title="Download và Cập nhật Hóa đơn Điện tử"
                       ><i class="fa fa-cloud-download" aria-hidden="true"></i>++
-                    </CButton>
-
+                    </CLoadingButton>
                   </CCol>
                   <CCol md="3">
                     <CInputGroup class="mb-3">
@@ -182,7 +184,7 @@
                   />
                 </modal>
                 <modal
-                  :header="'Download Invoices'"
+                  :header="'Download E-Invoices'"
                   :isShow="showModal_"
                   v-if="showModal_"
                   @close="showModal = false"
@@ -617,7 +619,7 @@
                 <CRow>
                   <CCol md="12">
                     <CInputGroup class="mb-3">
-                      <CInputGroupText>Diển giãi</CInputGroupText>
+                      <CInputGroupText>Diễn giải</CInputGroupText>
                       <CFormInput
                         class="form-control"
                         :class="{ 'is-valid': testValidator('diengiai') }"
@@ -1627,6 +1629,7 @@ export default {
             item.giaban = this.number_format(item['giaban'], 0, ',', '.')
             item.thuegtgt = this.number_format(item['thuegtgt'], 0, ',', '.')
           })
+
           if (this.hoadons.length > 0) {
             //this.hoadon = data.data.hoadon[0];
             this.editHoadon(0, 1)

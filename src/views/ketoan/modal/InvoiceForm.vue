@@ -214,6 +214,8 @@ export default {
           this.invoices = data.data.data.filter((doc) => {
             return doc.invoiceNumber.search('-') == -1
           })
+          this.invoices.sort((a, b) => a.invoiceNumber - b.invoiceNumber)
+
           this.$store.commit('set', ['isLoading', false])
           this.$toastr.warning(
             '',
