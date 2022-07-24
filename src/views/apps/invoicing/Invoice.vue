@@ -10,7 +10,12 @@
       >
         <CIcon icon="cil-print" /> Print
       </CButton>
-      <CButton class="me-1 float-end" color="info" size="sm">
+      <CButton
+        class="me-1 float-end"
+        color="info"
+        size="sm"
+        @click.prevent="save"
+      >
         <CIcon icon="cil-save" /> Save
       </CButton>
     </CCardHeader>
@@ -148,15 +153,32 @@
   </CCard>
 </template>
 <script>
+import apiService from '@/common/api.service'
 export default {
   name: 'Invoice',
   setup() {
     const print = () => {
       window.print()
     }
+    const save = () => {
+      apiService
+        .download('/easyinvoice', {
+          FromDate: '01/07/2022',
+          ToDate: '21/07/2022',
+          Option: 1,
+          filename: 'invoice.xlsx', // Phải là filename
+        })
+        .then((resp) => {
+          console.log(111, resp)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
 
     return {
       print,
+      save,
     }
   },
 }

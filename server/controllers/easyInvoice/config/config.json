@@ -1,0 +1,41 @@
+{
+  "common": {
+    "baseUri": "0303894719.easyinvoice.vn",
+    "username": "API",
+    "password": "8MWxLjtBRJZ4"
+  },
+  "common__": {
+    "baseUri": "demo3.easyinvoice.vn",
+    "username": "API1",
+    "password": "Sds@2017"
+  },
+  "api": {
+    "outPath": "invoice.pdf",
+    "getInvoiceView": {
+      "action": "/api/publish/viewInvoice"
+    },
+    "checkInvoiceState": {
+      "action": "/api/publish/checkInvoiceState"
+    },
+    "importInvoice": {
+      "action": "/api/publish/importInvoice"
+    },
+    "getInvoicePdf": {
+      "action": "/api/publish/getInvoicePdf",
+      "outPath": "invoice.pdf",
+      "outPath__": "C:/Users/chen/Desktop/invoice.pdf"
+    },
+    "getInvoiceUsageReport": {
+      "action": "/api/business/getInvoiceUsageReport"
+    },
+    "getInvoiceReport": {
+        "action": "/api/business/getInvoiceReport"
+    },
+    "getInvoiceByArisingDateRange": {
+        "action": "/api/business/getInvoiceByArisingDateRange"
+    }
+     
+    
+
+  }
+}

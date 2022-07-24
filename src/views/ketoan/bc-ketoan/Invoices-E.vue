@@ -29,6 +29,14 @@
         ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Update
         InvoiceNo
       </CButton>
+      <CButton
+        style="float: right; margin-right: 10px"
+        class="btn btn-outline-info btn-sm"
+        @click="downd_easyInvoice()"
+        title="Bảng kê Hóa đơn Bán ra trong kỳ"
+        ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        Easy-Invoice</CButton
+      >
     </h2>
     <CRow>
       <CCol md="3" style="float: right">
@@ -410,6 +418,34 @@ export default {
           console.log(err)
           this.$store.commit('set', ['isLoading', false])
         })
+    },
+    downd_easyInvoice() {
+      this.$apiAcn
+        .download('/easyinvoice', {
+          host: process.env.VUE_APP_EASYINVOICE_HOST,
+          username: process.env.VUE_APP_EASYINVOICE_USERNAME,
+          password: process.env.VUE_APP_EASYINVOICE_PASSWORD,
+          FromDate: moment(
+            this.infoketoan.fromtodate.pd_fromdate,
+            'YYYY-MM-DD',
+          ).format('DD/MM/YYYY'),
+          ToDate: moment(
+            this.infoketoan.fromtodate.pd_todate,
+            'YYYY-MM-DD',
+          ).format('DD/MM/YYYY'),
+          Option: 1,
+          filename: 'Easy-Invoice.xlsx', // Phải là filename
+        })
+        .then(() => {
+          this.$store.commit('set', ['isLoading', false])
+          this.$toastr.success('', 'Thực hiện THÀNH CÔNG ...')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      // var sot = prompt('Nhập số tiền ủy nhiệm chi ?')
+      // if (!sot) return
+      //==========================
     },
   },
   created() {

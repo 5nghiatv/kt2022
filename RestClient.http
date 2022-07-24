@@ -438,3 +438,15 @@ Content-Type: application/json
     "password": "111111",
     "email": "nghiatv@gmail.com"
 }
+
+### Tran Văn Nghĩa
+POST http://localhost:8081/api/easyinvoice
+Content-Type: application/json
+
+{
+  "FromDate": "01/07/2022",
+  "ToDate": "21/07/2022",
+  "Option": 1,
+  "outPath": "invoice.xlsx"
+}
+

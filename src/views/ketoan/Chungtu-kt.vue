@@ -1127,7 +1127,7 @@ export default {
           field: 'ngay2',
         },
         {
-          label: 'Diễn giãi',
+          label: 'Diễn giải',
           field: 'diengiai',
         },
         {

@@ -5,9 +5,11 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const auth = require('../configs/auth-api')
 const { User } = require('../models/User')
-const request = require('request')
+//const request = require('request')
 const dotenv = require('dotenv')
 dotenv.config()
+
+const { easyInvoice } = require('../controllers/easyInvoice')
 
 const {
   createConnectSql,
@@ -167,13 +169,15 @@ const { vfpUpload } = require('../../data/vfp/vfpupload')
 const { googleUpload, googleDelete } = require('../controllers/googleapis')
 
 // ============== TẮT sẽ tạm thời Tắt Đăng Nhập ==========
-router.use(auth, function (req, res, next) {
-  next()
-})
+
+// router.use(auth, function (req, res, next) {
+//   next()
+// })
 
 //router.get('/users/:filename', (req, res) => {
 // products dùng trong e-commerce/productApi
 
+router.get('/easyinvoice', easyInvoice)
 router.post('/googleupload', googleUpload)
 router.post('/googledelete', googleDelete)
 

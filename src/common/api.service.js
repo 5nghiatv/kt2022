@@ -187,6 +187,8 @@ const ApiService = {
       ) {
         // var filename =response.headers["content-disposition"] ;
         //filename = filename.substring(filename.search("filename=")+9);
+
+        //======  NHỚ params PHẢI LÀ params.filename
         var filename = params.filename //'Report-file.xlsx';
         const url = window.URL.createObjectURL(new Blob([response.data]))
         const link = document.createElement('a')
