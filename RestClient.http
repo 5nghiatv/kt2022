@@ -440,13 +440,18 @@ Content-Type: application/json
 }
 
 ### Tran Văn Nghĩa
-POST http://localhost:8081/api/easyinvoice
+GET http://localhost:8081/api/easyinvoice
 Content-Type: application/json
 
 {
+  "host": "0303894719.easyinvoice.vn",
+  "username": "API",
+  "password": "8MWxLjtBRJZ4",
+  "function": "/api/business/getInvoiceReport",
+
   "FromDate": "01/07/2022",
-  "ToDate": "21/07/2022",
+  "ToDate": "22/07/2022",
   "Option": 1,
-  "outPath": "invoice.xlsx"
+  "filename": "Easy-Invoice.xlsx"
 }
 

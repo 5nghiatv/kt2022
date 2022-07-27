@@ -113,8 +113,18 @@ var request1 =
 exports.easyInvoice = function (req, res) {
   //console.log('Start', 111, req.query)
 
-  //client.post_(getInvoiceReport, getInvoiceReport_, callbackBinary)
-  client.post(getInvoiceReport, req.query, res)
+  //client.post(getInvoiceUsageReport, req.query, res)  // EXT filename phải là : XLS
+  //client.post(getInvoiceReport, req.query, res)
+  // api/publish/importInvoice {“XmlData”: “Chuỗi XML”, “Pattern”: “Ký hiệu hóa đơn”, “Serial”: “Ký hiệu mẫu số hóa đơn” }
+  // api/publish/getInvoicePdf
+
+  client.post(req.query, res) // return data
+  //client.post(req.query, res, 1) // return download file
+  //client.post(req.query, res, 2) // return ghi file
+
+  //client.post(req.body, res) // Nếu dùng RestClient.http
+  // let body = JSON.parse(request1)
+  // console.log(body.XmlData, 111, body.Pattern, body.Serial)
   console.log('Waiting response....')
 }
 

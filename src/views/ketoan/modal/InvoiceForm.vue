@@ -154,6 +154,46 @@ export default {
         this.invoicesLocal = data.data.query
       })
     },
+    readTodos_Easy(opt) {
+      opt = 0 // 0:Getdata - 1: download - 2-Save oncly
+      let cpara = {
+        host: process.env.VUE_APP_EASYINVOICE_HOST,
+        username: process.env.VUE_APP_EASYINVOICE_USERNAME,
+        password: process.env.VUE_APP_EASYINVOICE_PASSWORD,
+        function: '/api/business/getInvoiceReport',
+        FromDate: moment(
+          this.infoketoan.fromtodate.pd_fromdate,
+          'YYYY-MM-DD',
+        ).format('DD/MM/YYYY'),
+        ToDate: moment(
+          this.infoketoan.fromtodate.pd_todate,
+          'YYYY-MM-DD',
+        ).format('DD/MM/YYYY'),
+        Option: 1,
+        filename: 'Easy-Invoice.xlsx', // Phải là filename
+        download: opt,
+      }
+
+      // 0 - GetData Excel file
+      this.$store.commit('set', ['isLoading', true])
+      if (opt == 0) cpara['responseType'] = 'json' // Chỉ nhận Data Liên quan api.service.js
+      this.$apiAcn
+        .download('/easyinvoice', cpara)
+        .then((ret) => {
+          this.$store.commit('set', ['isLoading', false])
+          this.$toastr.success('', 'Thực hiện THÀNH CÔNG ...')
+          this.invoices = ret.data.data
+          //console.log(this.invoices)
+          this.invoices.forEach((item) => {
+            item.totalBeforeTax = this.number_format(
+              item['totalBeforeTax'],0,',', '.',)            
+            item.taxAmount = this.number_format(item['taxAmount'], 0, ',', '.')
+          })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
     readTodos() {
       this.$store.commit('set', ['isLoading', true])
       this.$apiAcn

@@ -419,32 +419,40 @@ export default {
           this.$store.commit('set', ['isLoading', false])
         })
     },
-    downd_easyInvoice() {
+    downd_easyInvoice(opt) {
+      opt = 1 // 0:Getdata - 1: download - 2-Save oncly
+      let cpara = {
+        host: process.env.VUE_APP_EASYINVOICE_HOST,
+        username: process.env.VUE_APP_EASYINVOICE_USERNAME,
+        password: process.env.VUE_APP_EASYINVOICE_PASSWORD,
+        function: '/api/business/getInvoiceReport',
+        FromDate: moment(
+          this.infoketoan.fromtodate.pd_fromdate,
+          'YYYY-MM-DD',
+        ).format('DD/MM/YYYY'),
+        ToDate: moment(
+          this.infoketoan.fromtodate.pd_todate,
+          'YYYY-MM-DD',
+        ).format('DD/MM/YYYY'),
+        Option: 1,
+        filename: 'Easy-Invoice.xlsx', // Phải là filename
+        download: opt,
+      }
+
+      if (opt == 0) cpara['responseType'] = 'json' // Chỉ nhận Data Liên quan api.service.js
       this.$apiAcn
-        .download('/easyinvoice', {
-          host: process.env.VUE_APP_EASYINVOICE_HOST,
-          username: process.env.VUE_APP_EASYINVOICE_USERNAME,
-          password: process.env.VUE_APP_EASYINVOICE_PASSWORD,
-          FromDate: moment(
-            this.infoketoan.fromtodate.pd_fromdate,
-            'YYYY-MM-DD',
-          ).format('DD/MM/YYYY'),
-          ToDate: moment(
-            this.infoketoan.fromtodate.pd_todate,
-            'YYYY-MM-DD',
-          ).format('DD/MM/YYYY'),
-          Option: 1,
-          filename: 'Easy-Invoice.xlsx', // Phải là filename
-        })
-        .then(() => {
+        .download('/easyinvoice', cpara)
+        .then((ret) => {
           this.$store.commit('set', ['isLoading', false])
           this.$toastr.success('', 'Thực hiện THÀNH CÔNG ...')
+          if (ret.data) console.log(ret.data)
         })
         .catch((error) => {
           console.log(error)
         })
-      // var sot = prompt('Nhập số tiền ủy nhiệm chi ?')
-      // if (!sot) return
+
+      // api/publish/importInvoice
+      // api/publish/getInvoicePdf
       //==========================
     },
   },
