@@ -420,12 +420,19 @@ export default {
         })
     },
     downd_easyInvoice(opt) {
-      opt = 1 // 0:Getdata - 1: download - 2-Save oncly
+      opt = 1 // 0:Getdata - 1: download Excel - 2-Save oncly
       let cpara = {
         host: process.env.VUE_APP_EASYINVOICE_HOST,
         username: process.env.VUE_APP_EASYINVOICE_USERNAME,
         password: process.env.VUE_APP_EASYINVOICE_PASSWORD,
+        // hoặc là ================== BC sử dụng hóa đơn
+        // function: '/api/business/getInvoiceUsageReport',
+        // filename: 'Easy-Invoice.xls', // Phải là filename
+        // hoặc là ================== BC bảng kê Bán hàng
         function: '/api/business/getInvoiceReport',
+        filename: 'Easy-Invoice.xlsx', // Phải là filename
+        // ==========================
+
         FromDate: moment(
           this.infoketoan.fromtodate.pd_fromdate,
           'YYYY-MM-DD',
@@ -435,7 +442,6 @@ export default {
           'YYYY-MM-DD',
         ).format('DD/MM/YYYY'),
         Option: 1,
-        filename: 'Easy-Invoice.xlsx', // Phải là filename
         download: opt,
       }
 
@@ -451,8 +457,6 @@ export default {
           console.log(error)
         })
 
-      // api/publish/importInvoice
-      // api/publish/getInvoicePdf
       //==========================
     },
   },

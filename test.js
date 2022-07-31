@@ -538,10 +538,110 @@ global.runQuerySyncPool = async function (query, params) {
 }
 
 //bb()
-cc()
+//cc()
 async function cc() {
   let query = `SELECT * FROM dmtenkho`
   let kq = await runQuerySyncPool(query)
   console.log(111, kq, kq.length)
 }
 
+//JSON.stringify(body)
+
+let arr = JSON.parse(
+  '{"Pattern":"1C22TNT","Serial":"","XmlData":"<Invoices><Inv><Invoice><InvNo></InvNo><Ikey></Ikey><CusCode></CusCode><Buyer></Buyer ><CusName></CusName><Email></Email><EmailCC></EmailCC><CusAddress></CusAddress><CusBankName></CusBankName><CusBankNo></CusBankNo><CusPhone></CusPhone><CusTaxCode></CusTaxCode><PaymentMethod></PaymentMethod><ArisingDate></ArisingDate><ExchangeRate></ExchangeRate><CurrencyUnit>VND</CurrencyUnit><Extra></Extra><Products><Product><Code></Code><ProdName></ProdName><ProdUnit></ProdUnit><ProdQuantity></ProdQuantity><ProdPrice></ProdPrice><Total></Total><VATRate></VATRate><VATAmount></VATAmount><Amount></Amount><Extra><Pos></Pos></Extra></Product></Products><Total></Total><VATRate></VATRate><VATAmount></VATAmount><Amount></Amount><AmountInWords></AmountInWords></Invoice></Inv></Invoices>"}',
+)
+
+console.log(333, arr.Pattern, arr.Serial)
+
+let data = arr.XmlData
+xml2js.parseString(data, async (err, result) => {
+  let Invoice = result.Invoices.Inv[0].Invoice[0]
+  Invoice.Ikey = ['1234567890']
+  Invoice.CusCode = ['MULTICOLOR']
+  Invoice.Buyer = ['Trần Vũ Anh']
+  Invoice.CusName = ['CÔNG TY TNHH MULTI-COLOR VIỆT NAM']
+  Invoice.CusAddress = ['118/63 Bạch Đằng, P24, Q.Bình Thạnh - HCM']
+  Invoice.CusBankName = ['Ngân hàng Vietcombank Chi nhánh Bình ThạNH - HCM']
+  Invoice.CusBankNo = ['1233434545']
+  Invoice.CusPhone = ['']
+  Invoice.CusTaxCode = ['0304529821']
+  Invoice.PaymentMethod = ['TM']
+  Invoice.ArisingDate = ['30/07/2022']
+  Invoice.ExchangeRate = ['0']
+  Invoice.CurrencyUnit = ['VND']
+  Invoice.Extra = ['']
+  //Invoice.Products= Object
+  Invoice.Total = ['12000000']
+  Invoice.VATRate = ['10']
+  Invoice.VATAmount = ['1200000']
+  Invoice.Amount = ['13200000']
+  Invoice.AmountInWords = ['Mười ba triệu hai trăm ngàn đồng chẵn']
+
+  let Product = {
+    Code: 'GIAY',
+    No: '',
+    Feature: '',
+    ProdName: 'Giấy bãi bằng Việt Nam',
+    ProdUnit: 'Kg',
+    ProdQuantity: '3000',
+    ProdPrice: '2000',
+    Total: '6000000',
+    VATRate: '10',
+    VATAmount: '600000',
+    Amount: '6600000',
+    Extra: '',
+  }
+  result.Invoices.Inv[0].Invoice[0].Products[0].Product = []
+  result.Invoices.Inv[0].Invoice[0].Products[0].Product.push(Product)
+  result.Invoices.Inv[0].Invoice[0].Products[0].Product.push(Product)
+
+  console.log(
+    555,
+    result.Invoices.Inv[0].Invoice[0].Buyer,
+    666,
+    result.Invoices.Inv[0].Invoice[0].Products[0].Product,
+  )
+
+  let require = {
+    function: '/api/publish/importInvoice',
+    host: '0303894719.easyinvoice.vn',
+    username: 'API',
+    password: '8MWxLjtBRJZ4',
+    XmlData: json2xml(result),
+  }
+
+  console.log(111, require, JSON.stringify(require))
+
+  function json2xml(obj) {
+    const builder = new xml2js.Builder({
+      headless: true,
+      allowSurrogateChars: true,
+      cdata: true,
+      renderOpts: { pretty: true, indent: '', newline: '' },
+    })
+    const xml = builder.buildObject(obj)
+    return xml
+  }
+  function updateProduct() {
+    let sanpham =
+      '<Products><Product><Code></Code><Name></Name><Price></Price><Unit></Unit><Des></Des><VATRate></VATRate></Product></Products>'
+    xml2js.parseString(sanpham, async (err, result) => {
+      let sp = result.Products.Product[0]
+      sp.Code = ['001']
+      sp.Name = ['Giấy màu các loại']
+      sp.Price = ['25000']
+      sp.Unit = ['Kg']
+      sp.Des = ['Hàng nhập USA']
+      sp.VATRate = ['8']
+      console.log(11, sp)
+      let Data = {
+        function: '/api/publish/updateProduct',
+        host: '0303894719.easyinvoice.vn',
+        username: 'API',
+        password: '8MWxLjtBRJZ4',
+        XmlData: json2xml(result),
+      }
+      console.log(111, Data)
+    })
+  }
+})

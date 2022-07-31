@@ -12,6 +12,7 @@ function init(methodName, strBody) {
   config.common.baseUri = body.host
   config.common.username = body.username
   config.common.password = body.password
+
   // Thiết lập biến thông tin đăng nhập
 
   var baseUri = config.common.baseUri
@@ -32,17 +33,18 @@ function init(methodName, strBody) {
   return options
 }
 
-function post_(action, body, callback) {
-  if (body.outPath) config.api.outPath = body.outPath // Nghia Add
-
+function postOld(body, callback) {
+  //if (body.outPath) config.api.outPath = body.outPath // Nghia Add
+  let action = body.function
   var strBody = JSON.stringify(body)
   var methodName = 'POST'
   var options = init(methodName, strBody)
   options.path = action
+  //console.log(555, options)
   var req = http.request(options, function (res) {
     callback(res)
   })
-  console.log('Request body: ' + strBody)
+  //console.log('Request body: ' + strBody)
   req.write(strBody, 'utf8')
   req.end()
 }
@@ -104,6 +106,7 @@ function post(body, res) {
   var methodName = 'POST'
   var options = init(methodName, strBody)
   options.path = action
+  //console.log(555, options)
   var req = http.request(options, function (ret) {
     var chunks = []
     ret.on('data', function (data) {
@@ -147,6 +150,6 @@ function post(body, res) {
 }
 
 module.exports = {
-  post_: post_,
+  postOld: postOld,
   post: post,
 }

@@ -29,13 +29,18 @@
       "action": "/api/business/getInvoiceUsageReport"
     },
     "getInvoiceReport": {
-        "action": "/api/business/getInvoiceReport"
+      "action": "/api/business/getInvoiceReport"
     },
     "getInvoiceByArisingDateRange": {
-        "action": "/api/business/getInvoiceByArisingDateRange"
+      "action": "/api/business/getInvoiceByArisingDateRange"
+    },
+    "updateCustomer": {
+      "action": "/api/publish/updateCustomer"
+    },
+    "updateProduct": {
+      "action": "/api/publish/updateProduct"
     }
-     
-    
 
+    
   }
 }

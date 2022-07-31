@@ -5,17 +5,7 @@ var client = require('./request')
 var fs = require('fs')
 var stream = require('stream')
 //const JSZip = require('jszip')
-
-// var action = config.api.getInvoiceView.action
-// var action2 = config.api.checkInvoiceState.action
-// var importInvoiceAction = config.api.importInvoice.action
-// var getInvoicePdfAction = config.api.getInvoicePdf.action
-
-// Add NEW ===========================
-var getInvoiceUsageReport = config.api.getInvoiceUsageReport.action
-var getInvoiceReport = config.api.getInvoiceReport.action
-var getInvoiceByArisingDateRange =
-  config.api.getInvoiceByArisingDateRange.action
+const xml2js = require('xml2js')
 
 var callback = function (res) {
   var responseString = ''
@@ -47,42 +37,7 @@ var callbackBinary = function (res) {
     s.pipe(filestream)
   })
 
-  // var filename = 'invoice.xlsx';
-  // var zip = new JSZip()
-  // zip.file(filename, chunks)
-  // res.setHeader('Content-Disposition', 'attachment; filename=' + filename)
-  // res.setHeader('Content-Type', 'application/pdf') // 'application/zip'
-  // zip
-  //   .generateNodeStream({
-  //     type: 'nodebuffer',
-  //     streamFiles: true,
-  //   }) // Nén thì Phải có compression: 'DEFLATE'
-  //   .pipe(res)
-  //   .on('finish', function () { console.log('filename: ' + filename ) })
-
   console.log('Done')
-}
-
-var body = {
-  IKey: '4c37090df6164b80b685b5b1ae72dbb6',
-  Pattern: '01GTKT0/003',
-}
-
-var body2 = {
-  IKey: '4c37090df6164b80b685b5b1ae72dbb6',
-}
-
-var body3 = {
-  IKey: '8e6a8dd2f4b24a539b8d9d4f8cedb5df',
-  Pattern: '01GTKT0/001',
-  Option: 0,
-}
-
-var body31 = {
-  IKey: '2018001',
-  Pattern: '01GTKT0/001',
-  Option: 0,
-  outPath: 'invoice.pdf',
 }
 
 var getInvoiceUsageReport_ = {
@@ -98,17 +53,99 @@ var getInvoiceReport_ = {
   outPath: 'invoice.xlsx',
 }
 
-//client.post(action, body, callback);
-
-var request1 =
-  '{"Pattern":"01GTKT0/001","Serial":"HD/18E","XmlData":"<Invoices><Inv><key>2018001</key><Invoice><InvNo>a</InvNo><CusCode><![CDATA[a]]></CusCode><Buyer><![CDATA[Ho van PHi]]></Buyer><CusName><![CDATA[Cong ty OneHealh]]></CusName><CusAddress><![CDATA[3/2 thong nhat]]></CusAddress><CusBankName><![CDATA[NH Tien Phong]]></CusBankName><CusBankNo>1233434545</CusBankNo><CusPhone><![CDATA[a]]></CusPhone><CusTaxCode>1234512345</CusTaxCode><PaymentMethod>TM</PaymentMethod><ArisingDate>a</ArisingDate><ExchangeRate>0</ExchangeRate><CurrencyUnit>VND</CurrencyUnit><Extra><![CDATA[Hoa don test]]></Extra><Products><Product><Code><![CDATA[KPK]]></Code><ProdName><![CDATA[Kham phu khoa]]></ProdName><ProdUnit><![CDATA[Dich vu]]></ProdUnit><ProdQuantity>3</ProdQuantity><ProdPrice>2000</ProdPrice><Total>6000</Total><VATRate>0</VATRate><VATAmount>0</VATAmount><Amount>6000</Amount><Extra><![CDATA[a]]></Extra></Product><Product><Code><![CDATA[KRM]]></Code><ProdName><![CDATA[Kham rang mieng]]></ProdName><ProdUnit><![CDATA[Dich vu]]></ProdUnit><ProdQuantity>3</ProdQuantity><ProdPrice>2000</ProdPrice><Total>6000</Total><VATRate>0</VATRate><VATAmount>0</VATAmount><Amount>6000</Amount><Extra><![CDATA[a]]></Extra></Product></Products><Total>40000</Total><VATRate>0</VATRate><VATAmount>0</VATAmount><Amount>40000</Amount><AmountInWords>a</AmountInWords></Invoice></Inv></Invoices>","IkeyEmail":{"2018001":""}}'
-
-//client.post(importInvoiceAction, request1, callback);
-//client.post(getInvoicePdfAction, body3, callbackBinary);
-//client.post(getInvoicePdfAction, body31, callbackBinary);
-
 // NGHĨA NEW ADD
 //client.post(getInvoiceUsageReport, getInvoiceUsageReport_, callbackBinary);
+function json2xml(obj) {
+  const builder = new xml2js.Builder({
+    headless: true,
+    allowSurrogateChars: true,
+    cdata: true,
+    renderOpts: { pretty: true, indent: '', newline: '' },
+  })
+  const xml = builder.buildObject(obj)
+  return xml
+}
+function updateProduct() {
+  let sanpham =
+    '<Products><Product><Code></Code><Name></Name><Price></Price><Unit></Unit><Des></Des><VATRate></VATRate></Product></Products>'
+  xml2js.parseString(sanpham, async (err, result) => {
+    let sp = result.Products.Product[0]
+    sp.Code = ['001']
+    sp.Name = ['Giấy màu các loại - USA']
+    sp.Price = ['25000']
+    sp.Unit = ['Kg']
+    sp.Des = ['Hàng nhập USA']
+    sp.VATRate = ['10']
+    let request = {
+      function: '/api/publish/updateProduct',
+      host: '0303894719.easyinvoice.vn',
+      username: 'API',
+      password: '8MWxLjtBRJZ4',
+      XmlData: json2xml(result),
+    }
+    //console.log(111, request)
+    client.postOld(request, callback)
+  })
+}
+
+function importInvoice() {
+  let arr = JSON.parse(
+    '{"XmlData":"<Invoices><Inv><Invoice><InvNo></InvNo><Ikey></Ikey><CusCode></CusCode><Buyer></Buyer><CusName></CusName><Email></Email><EmailCC></EmailCC><CusAddress></CusAddress><CusBankName></CusBankName><CusBankNo></CusBankNo><CusPhone></CusPhone><CusTaxCode></CusTaxCode><PaymentMethod></PaymentMethod><ArisingDate></ArisingDate><ExchangeRate></ExchangeRate><CurrencyUnit>VND</CurrencyUnit><Extra></Extra><Products><Product><Code></Code><ProdName></ProdName><ProdUnit></ProdUnit><ProdQuantity></ProdQuantity><ProdPrice></ProdPrice><Total></Total><VATRate></VATRate><VATAmount></VATAmount><Amount></Amount><Extra><Pos></Pos></Extra></Product></Products><Total></Total><VATRate></VATRate><VATAmount></VATAmount><Amount></Amount><AmountInWords></AmountInWords></Invoice></Inv></Invoices>"}',
+  )
+  let data = arr.XmlData
+  xml2js.parseString(data, async (err, result) => {
+    let Invoice = result.Invoices.Inv[0].Invoice[0]
+    Invoice.Ikey = ['1234567890']
+    Invoice.CusCode = ['MULTICOLOR']
+    Invoice.Buyer = ['Trần Vũ Anh']
+    Invoice.CusName = ['CÔNG TY TNHH MULTI-COLOR VIỆT NAM']
+    Invoice.CusAddress = ['118/63 Bạch Đằng, P24, Q.Bình Thạnh - HCM']
+    Invoice.CusBankName = ['Ngân hàng Vietcombank Chi nhánh Bình Thạnh - HCM']
+    Invoice.CusBankNo = ['1233434545']
+    Invoice.CusPhone = ['']
+    Invoice.CusTaxCode = ['0304529821']
+    Invoice.PaymentMethod = ['TM']
+    Invoice.ArisingDate = ['30/07/2022']
+    Invoice.ExchangeRate = ['0']
+    Invoice.CurrencyUnit = ['VND']
+    Invoice.Extra = ['']
+    //Invoice.Products= Object
+    Invoice.Total = ['12000000']
+    Invoice.VATRate = ['10']
+    Invoice.VATAmount = ['1200000']
+    Invoice.Amount = ['13200000']
+    Invoice.AmountInWords = ['Mười ba triệu hai trăm ngàn đồng chẵn']
+
+    let Product = {
+      Code: 'GIAY',
+      No: '',
+      Feature: '',
+      ProdName: 'Giấy bãi bằng Việt Nam',
+      ProdUnit: 'Kg',
+      ProdQuantity: '3000',
+      ProdPrice: '2000',
+      Total: '6000000',
+      VATRate: '10',
+      VATAmount: '600000',
+      Amount: '6600000',
+      Extra: '',
+    }
+    result.Invoices.Inv[0].Invoice[0].Products[0].Product = []
+    result.Invoices.Inv[0].Invoice[0].Products[0].Product.push(Product)
+    result.Invoices.Inv[0].Invoice[0].Products[0].Product.push(Product)
+
+    let request = {
+      function: '/api/publish/importInvoice',
+      host: '0303894719.easyinvoice.vn',
+      username: 'API',
+      password: '8MWxLjtBRJZ4',
+      Pattern: '1C22TNT',
+      Serial: '',
+      XmlData: json2xml(result),
+    }
+    client.postOld(request, callback)
+  })
+}
 
 exports.easyInvoice = function (req, res) {
   //console.log('Start', 111, req.query)
@@ -118,9 +155,11 @@ exports.easyInvoice = function (req, res) {
   // api/publish/importInvoice {“XmlData”: “Chuỗi XML”, “Pattern”: “Ký hiệu hóa đơn”, “Serial”: “Ký hiệu mẫu số hóa đơn” }
   // api/publish/getInvoicePdf
 
-  client.post(req.query, res) // return data
-  //client.post(req.query, res, 1) // return download file
-  //client.post(req.query, res, 2) // return ghi file
+  //--------------------------------- GOOD RUN
+  //importInvoice()
+  //updateProduct()
+  client.post(req.query, res) // download bảng kê bán hàng hoặc lấy dữ liệu
+  //---------------------------------
 
   //client.post(req.body, res) // Nếu dùng RestClient.http
   // let body = JSON.parse(request1)
