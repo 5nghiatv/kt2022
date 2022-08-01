@@ -38,7 +38,10 @@ exports.getSingleHoadon = async function (req, res) {
 
 // get ctID Hoadon
 exports.getHoadon = async function (req, res) {
-  var query = 'SELECT * FROM hoadon WHERE ctid = ' + req.params.ctid
+  var query =
+    'SELECT * FROM hoadon WHERE ctid = ' +
+    req.params.ctid +
+    ' ORDER BY ngay, sohd'
   try {
     let rows = await runQuerySync(query, [], req, res)
     return res.status(200).json({

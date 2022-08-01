@@ -187,7 +187,7 @@
                   :header="'Download E-Invoices'"
                   :isShow="showModal_"
                   v-if="showModal_"
-                  @close="showModal = false"
+                  @close="showModal_ = false"
                 >
                   <invoice-form v-on:submit-form="invoiceAction" />
                 </modal>
